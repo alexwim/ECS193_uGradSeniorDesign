@@ -9,6 +9,8 @@ project/Obj/*
 project/UnityGenerated/*
 project/Library/*
 project/Assets/AssetStoreTools*
+project/*_Data
+project/*.exe
 
 # ================== #
 # OS Generated Stuff #
