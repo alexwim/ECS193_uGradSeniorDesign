@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2014.12.4)  1 FEB 2015 20:04
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2014.12.4)  1 FEB 2015 20:15
 entering extended mode
 **specs.tex
 ("C:\Users\tktong\Documents\ECS 193\docs\specs\specs.tex"
@@ -233,23 +233,20 @@ Missing character: There is no â in font cmr10!
 Missing character: There is no € in font cmr10!
 Missing character: There is no “ in font cmr10!
  [3] [4]
-Missing character: There is no Â in font cmr10!
-Missing character: There is no ­ in font cmr10!
-
 [5]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 209.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 213.
  [6]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 209.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 213.
  ("C:\Users\tktong\Documents\ECS 193\docs\specs\specs.aux")
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 209.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 209.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 213.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 213.
 Package rerunfilecheck Info: File `specs.out' has not changed.
 (rerunfilecheck)             Checksum: 8E8F546074D49CA3B0E3E21D039C36A6;1854.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 209.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 213.
  ) 
 Here is how much of TeX's memory you used:
- 4451 strings out of 493921
- 67164 string characters out of 3144873
+ 4453 strings out of 493921
+ 67186 string characters out of 3144873
  143914 words of memory out of 3000000
  7672 multiletter control sequences out of 15000+200000
  10069 words of font info for 35 fonts, out of 3000000 for 9000
@@ -265,9 +262,9 @@ les (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Program Files
 (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr9.pfb><C:/Program Files (x86
 )/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Program Files (x86)/
 MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti10.pfb>
-Output written on specs.pdf (6 pages, 158274 bytes).
+Output written on specs.pdf (6 pages, 158696 bytes).
 PDF statistics:
- 240 PDF objects out of 1000 (max. 8388607)
- 75 named destinations out of 1000 (max. 500000)
+ 242 PDF objects out of 1000 (max. 8388607)
+ 77 named destinations out of 1000 (max. 500000)
  217 words of extra memory for PDF output out of 10000 (max. 10000000)
 
