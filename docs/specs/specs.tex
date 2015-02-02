@@ -20,18 +20,16 @@
 
 \section{Summary}
 
-\paragraph{} Since its birth, video games have continuously evolved --- creating new gameplay and integrating new mediums.
+\paragraph{} Since its birth, video games have continuously evolved --- improving graphics, inventing new genres, integrating new mediums, etc. Starting as arcade video games, it later evolved to be consumer-owned systems starting with the Atari 2600. As system performance improves, a greater variety of mediums emerged. Games can now be played on the computer, on a console, and through the internet.The newest medium that has emerged recently is both the natural user interface and virtual reality. 
 
-\paragraph{} The traditional real-time strategy (RTS) game implements multiple dimensions using a layered style of interactions -- typically land and sky. Units exists in one layer at a given time and majority of units can only interact with one layer.  Only a few are capable of existing in one layer and interacting with both layers. This emulates a three dimensional field, but restricts the z-axis to only two domains. It is important to note that the multiple dimension emulation is on the game implementation and not the graphics render. This presents the initial question -- is it possible to have a truly three dimensional real-time strategy game?
+\paragraph{} Natural user interface is the ability to use an application without the need for any controller. In this case, the player’s own body or parts of the body becomes the controller. The concept of natural user interface first appeared in 1990, but the first popular usage for video games appeared in 2010 with the release of the Microsoft Kinect. Traditional keyboards and mice can only interact with a monitor or any visual interface in a two-dimensional sense. However, with a natural user interface it becomes possible to interact in three dimensions. 
 
-\paragraph{} Throughout the years, real time strategy games have not changed much aside from the multiple layered system. Almost all real-time strategy games released can be seen to follow this standard model. The only differences being textures, models, sounds, names, and in-game stats. It is undoubtable that the real-time strategy game industry is struggling to provide the gaming community with a more enjoyable experience and greater immersion. Gaming news articles such as the following have begun emerging in recent years:
+\paragraph{} Virtual reality is an immersive experience within a computer-simulated environment. First conceptualized in 1930, but only recently has it become a popular with the Oculus Rift Development Kit 1. It provides the user a complete immersion and a new perspective into the virtual world. Whereas a monitor restricts a user to only view in two dimensions, virtual reality allows the user to see the world in three dimensions.
 
-\begin{itemize}
-	\item \href{http://www.giantbomb.com/profile/scroll/blog/is-the-real-time-strategy-genre-dead/104746/}{Is the Real Time Strategy Genre dead?}
-	\item \href{http://www.pcgamer.com/face-off-is-the-rts-genre-dying/}{Face Off: Is the RTS genre dying?}
-\end{itemize}
+\paragraph{} The combination of both natural user interface and virtual reality is an idea that has only appeared within the last 1-2 years. However, there are still very few video games that utilize these new mediums. The goal of this project is to take an existing genre and develop a video game of that genre integrating both natural user interface and virtual reality. 
 
-\paragraph{} Based on the emergence of virtual reality and natural user interface technologies though, this challenge may very well be addressable. The traditional keyboard and mouse with a monitor is incapable of interacting with three dimensional space easily. The only possible way is to keep one axis constant and then move along the other two. A natural user interface, however, receives input in three-dimensional space from the physical world. Virtual reality is then used to aid the player immersion and camera perspective. The question now becomes  -- is it possible to integrate virtual reality and natural user interface to create a truly three dimensional real-time strategy game?
+\paragraph{} The genre of choice is Castle Defense. The primary goal of the game is to protect the castle and survive. Waves of monsters will attempt to breach the castle and the player will have to either defeat the entire wave or hold off for a set amount of time. One of the classic castle defense games --- “Defend Your Castle” --- is a flash-based browser game limited to only two dimensions and mouse-clicking.
+
 
 \section{Stakeholders}
 
@@ -80,6 +78,54 @@
 \paragraph{} User interface specifications are subject to change based on prototyping. A proof of concept for specific interface controls, usability, and organization will be necessary in determining the final details. This project will be following Agile development and iterative development methodologies for adaptive planning.
 
 \subsection{Detailed Specifications}
+
+\subsubsection{Interface}
+
+\begin{enumerate}
+	\item Primary:
+	\begin{enumerate}
+		\item Display virtual world through Oculus Rift.
+		\item Camera rotates and shifts with Oculus Rift.
+		\item User Controls:
+		\begin{itemize}
+			\item Camera Zoom.
+			\item In-Game Pause Menu.
+			\item Menu Interactions.
+			\item Attack Methods.
+		\end{itemize}
+	\end{enumerate}
+	\item Secondary:
+	\begin{enumerate}
+		\item Unit Spawn.
+		\item Base Repair.
+	\end{enumerate}
+\end{enumerate}
+
+\subsubsection{Game}
+
+\begin{enumerate}
+	\item Primary:
+	\begin{enumerate}
+		\item Multiplayer Connectivity.
+		\item Different Modes:
+		\begin{itemize}
+			\item Single Player Survival.
+		\end{itemize}
+	\end{enumerate}
+	\item Secondary:
+	\begin{enumerate}
+		\item Multiplayer Survival.
+		\item Multiplayer Battle.
+	\end{enumerate}
+\end{enumerate}
+
+\subsubsection{Low Priority}
+
+\begin{itemize}
+	\item Improved 3D Models.
+	\item Expanded HUD.
+	\item Sound.
+\end{itemize}
 
 \subsection{Functional Testing}
 
@@ -142,13 +188,19 @@
 
 \subsection{What Must be Done When?}
 
+\paragraph{} By the end of March, a simple prototype of the castle defense video game will be completed. It will provide the basic gameplay of single player survival. After this, the second prototype is to be completed by mid­-June, which will be more finely tuned to make game more aesthetically appealing and contain all the different modes.
+
 \subsubsection{What will be Delivered, and to Whom?}
 
 \subsubsection{In What Form will it be Delivered?}
 
 \subsection{Who Will Sign Off When it is Done?}
 
+\paragraph{} A representative of the team will sign off.
+
 \section{Summary}
+
+\paragraph{} For our initial prototype we aim to produce a Castle Defense game with the Unity game engine, Oculus Rift, and Leap Motion. With these technologies we will provide an immersive and natural experience to users through the use of motion controls and virtual reality. We will have a variety of game modes to choose from which range from Single Player Survival to Cooperative and Competitive Multiplayer Modes. For our first iteration we will provide a prototype that  implements the controls and renders a virtual world for the player and provides the basic gameplay of the single player survival mode. We will continue to make improvements to the system by adding more game modes, refining the controls, making improvements to the interface, and making the game more aesthetically pleasing.
 
 \section{Signatures}
 
