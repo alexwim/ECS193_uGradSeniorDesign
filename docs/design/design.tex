@@ -2,6 +2,7 @@
 
 \usepackage{graphicx}
 \usepackage{float}
+\usepackage{array} 
 
 \begin{document}
 
@@ -91,5 +92,43 @@
 \paragraph{} For the Multiplayer Competitive mode, two players will compete with each other to see who is the dominant one. Player A will be be defending the castle as in the Single Player Survival mode. Player B will take control of the waves that are attacking the castle. Player B will be responsible for spawning the waves and sending them through paths that lead to the castle. If Player A successfully fends off 3 waves Player A will be declared the victor. On the other hand, if Player A fails to do so then Player B will win the game.
 
 \subsection{Enemy Hierarchy}
+
+\subsubsection{Basic Stickman}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics{../images/castle-defense-basic-stickman.png}
+\end{figure}
+
+\paragraph{} This is the first enemy that players will encounter. They are the weakest of two that will be introduced in Prototype I. They will not be too difficult to dispose of and serve more as a tutorial for players who are first coming into the game.
+
+\begin{table}[H]
+	\centering
+	\begin{tabular}{c >{\(}c<{\)}}
+		Health Rating	&	\star \star \star\\
+		Attack Rating	&	\star \star \star\\
+		Defense Rating	&	\star\\
+		Speed Rating	&	\star \star \star
+	\end{tabular}
+\end{table}
+
+\subsubsection{Bulky Stickman}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics{../images/castle-defense-bulky-stickman.png}
+\end{figure}
+
+\paragraph{} After fending off Basic Stickman the player will now encounter a new foe, the mighty Bulky Stickman. The Bulky Stickman is stronger than Basic Stickman, but it comes at a cost. The armor weighs down the Stickman and slows him down.
+
+\begin{table}[H]
+	\centering
+	\begin{tabular}{c >{\(}c<{\)}}
+		Health Rating	&	\star \star \star \star \star\\
+		Attack Rating	&	\star \star \star \star \star\\
+		Defense Rating	&	\star \star \star\\
+		Speed Rating	&	\star
+	\end{tabular}
+\end{table}
 
 \end{document}
