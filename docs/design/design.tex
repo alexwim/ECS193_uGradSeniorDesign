@@ -1,5 +1,7 @@
 \input{../config/config_default.tex}
 
+\usepackage{graphicx}
+\usepackage{float}
 
 \begin{document}
 
@@ -17,7 +19,7 @@
 
 \subsection{Unity Game Engine}
 
-\paragraph{} Unity is the game engine of choice for this project. Developed by Unity Technologies, Unity includes both a game engine and an integrated development environment. There are a variety of factors that led to the adoption of Unity, such as portability. Games built on Unity are able to run on multiple platforms; this allows for game development regardless of operating system. A host of plug-ins and libraries are also available for Unity such as the A* Pathfinding Project and Photon, which will prove to be useful in development of this project. The most notable plug-in and library is the Oculus Rift and Leapmotion compatibility. Other game engines require workarounds while Unity makes integration simple. 
+\paragraph{} Unity is the game engine of choice for this project. Developed by Unity Technologies, Unity includes both a game engine and an integrated development environment. There are a variety of factors that led to the adoption of Unity, such as portability. Games built on Unity are able to run on multiple platforms; this allows for game development regardless of operating system. A host of plug-ins and libraries are also available for Unity such as the A* Pathfinding Project and Photon, which will prove to be useful in development of this project. The most notable plug-in and library is the Oculus Rift and Leap Motion compatibility. Other game engines require workarounds while Unity makes integration simple. 
 
 \section{Goal}
 
@@ -34,22 +36,60 @@
 \begin{itemize}
 	\item True three dimensional real-time strategy.
 	\item "Cool" factor for in-person perspective with combat.
+	\item High customization.
 \end{itemize}
 
 \subsubsection{Cons}
 
 \begin{itemize}
+	\item Steep learning curve.
 	\item Reduced precision in controls due to technology.
 	\item In-person perspective has no objective gain in competitive gameplay, but rather impedes player. Zooming out to bird's eye view while aligning to one of three axis will provide a much more effective perspective which defeats the purpose of certain technologies in this game.
-	\item 
 \end{itemize}
 
 \subsection{Castle Defense}
+
+\paragraph{} The original version of Castle Defense was a Flash-based browser video game called ``Defend Your Castle". In this game, there were a series of different enemies who would walk to the castle and attack it, but all of them were in a stick figure art style. Players were to prevent enemies from destroying the castle, by using a variety of methods, such as drag and dropping the enemies or flinging them away. In 2008, a milder version of this game was released on the Wii and included a multiplayer mode. The weapons that were used were daily household items and the use of blood was removed. In 2009, an iOS version was release and implemented the finger-touch method for controls rather than a mouse. This game genre has received completely mixed reviews; some critics and users enjoyed the game play, but disliked the graphics, while many thought the vice versa.
+
+\subsubsection{Pros}
+
+\begin{itemize}
+	\item Easy to pickup and play.
+	\item Requires less precision for hand gestures.
+\end{itemize}
+
+\subsubsection{Cons}
+
+\begin{itemize}
+	\item Near zero gameplay customization.
+	\item Standard gameplay is simpler in complexity compared to real-time strategy.
+\end{itemize}
 
 \section{Implementation}
 
 \subsection{Genre of Choice}
 
-\subsection{}
+\paragraph{} Castle Defense.
+
+\paragraph{} After weighing the Pros and Cons of both game genres the team opted for the Castle Defense game. Castle Defense targets a wider audience of players and this is mainly due to the fact that there is a steeper learning curve for a Real Time Strategy game. Another critical reason was the fact that, for the real-time strategy game, the standard birds-eye view was more effective than the virtual reality in-person view. People of all ages will be able to pick up and play the game easily and start having fun.
+
+\subsection{Game Flow}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics{../images/castle-defense-game-flow.png}
+\end{figure}
+
+\paragraph{} One of the core principles for designing the game was to allow the user to jump right into the action and start playing without the hassle of navigating through a series of menus. Menus break immersion if done incorrectly, which is why we have decided to minimize menus as much as possible. As can be seen from the flow-chart above, the user does not need to fiddle with options to get into the game. 
+
+\subsection{Victory Conditions}
+
+\paragraph{} Victory conditions will vary depending on the type of game mode that the player(s) select. 
+
+\paragraph{} For the Single Player Survival and Multiplayer Cooperative mode, the user(s) must survive wave after wave of enemies that attack their castle. If the player(s) manage(s) to defend the castle against a set number of waves then they will win the game and be sent to a “Victory!” screen. However if the player fails to do so they will be sent to a ``Game Over!" screen.
+
+\paragraph{} For the Multiplayer Competitive mode, two players will compete with each other to see who is the dominant one. Player A will be be defending the castle as in the Single Player Survival mode. Player B will take control of the waves that are attacking the castle. Player B will be responsible for spawning the waves and sending them through paths that lead to the castle. If Player A successfully fends off 3 waves Player A will be declared the victor. On the other hand, if Player A fails to do so then Player B will win the game.
+
+\subsection{Enemy Hierarchy}
 
 \end{document}

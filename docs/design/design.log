@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2014.12.4)  8 FEB 2015 13:46
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2014.12.4)  8 FEB 2015 14:25
 entering extended mode
 **design.tex
 ("C:\Users\tktong\Documents\ECS 193\docs\design\design.tex"
@@ -35,58 +35,128 @@ File: size11.clo 2007/10/19 v1.4h Standard LaTeX file (size option)
 Package: fullpage 1999/02/23 1.1 (PWD)
 \FP@margin=\skip43
 ))
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\graphics\graphicx.sty"
+Package: graphicx 1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
+
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\graphics\keyval.sty"
+Package: keyval 1999/03/16 v1.13 key=value parser (DPC)
+\KV@toks@=\toks14
+)
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\graphics\graphics.sty"
+Package: graphics 2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
+
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\graphics\trig.sty"
+Package: trig 1999/03/16 v1.09 sin cos tan (DPC)
+)
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\00miktex\graphics.cfg"
+File: graphics.cfg 2007/01/18 v1.5 graphics configuration of teTeX/TeXLive
+)
+Package graphics Info: Driver file: pdftex.def on input line 91.
+
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\pdftex-def\pdftex.def"
+File: pdftex.def 2011/05/27 v0.06d Graphics/color for pdfTeX
+
+("C:\Program Files (x86)\MiKTeX 2.9\tex\generic\oberdiek\infwarerr.sty"
+Package: infwarerr 2010/04/08 v1.3 Providing info/warning/error messages (HO)
+)
+("C:\Program Files (x86)\MiKTeX 2.9\tex\generic\oberdiek\ltxcmds.sty"
+Package: ltxcmds 2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
+)
+\Gread@gobject=\count87
+))
+\Gin@req@height=\dimen103
+\Gin@req@width=\dimen104
+)
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\float\float.sty"
+Package: float 2001/11/08 v1.3d Float enhancements (AL)
+\c@float@type=\count88
+\float@exts=\toks15
+\float@box=\box26
+\@float@everytoks=\toks16
+\@floatcapt=\box27
+)
 ("C:\Users\tktong\Documents\ECS 193\docs\design\design.aux")
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 4.
-LaTeX Font Info:    ... okay on input line 4.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 4.
-LaTeX Font Info:    ... okay on input line 4.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 4.
-LaTeX Font Info:    ... okay on input line 4.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 4.
-LaTeX Font Info:    ... okay on input line 4.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 4.
-LaTeX Font Info:    ... okay on input line 4.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 4.
-LaTeX Font Info:    ... okay on input line 4.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 6.
+LaTeX Font Info:    ... okay on input line 6.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 6.
+LaTeX Font Info:    ... okay on input line 6.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 6.
+LaTeX Font Info:    ... okay on input line 6.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 6.
+LaTeX Font Info:    ... okay on input line 6.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 6.
+LaTeX Font Info:    ... okay on input line 6.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 6.
+LaTeX Font Info:    ... okay on input line 6.
+
+("C:\Program Files (x86)\MiKTeX 2.9\tex\context\base\supp-pdf.mkii"
+[Loading MPS to PDF converter (version 2006.09.02).]
+\scratchcounter=\count89
+\scratchdimen=\dimen105
+\scratchbox=\box28
+\nofMPsegments=\count90
+\nofMParguments=\count91
+\everyMPshowfont=\toks17
+\MPscratchCnt=\count92
+\MPscratchDim=\dimen106
+\MPnumerator=\count93
+\makeMPintoPDFobject=\count94
+\everyMPtoPDFconversion=\toks18
+)
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <12> on input line 6.
+(Font)              <12> on input line 8.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <8> on input line 6.
+(Font)              <8> on input line 8.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <6> on input line 6.
+(Font)              <6> on input line 8.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <7> on input line 6.
+(Font)              <7> on input line 8.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <5> on input line 6.
+(Font)              <5> on input line 8.
  [1
 
 {C:/ProgramData/MiKTeX/2.9/pdftex/config/pdftex.map}]
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 35.
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 37.
 
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\omscmr.fd"
 File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10.95> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 35.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 37.
  [2]
+<../images/castle-defense-game-flow.png, id=13, 435.12563pt x 283.0575pt>
+File: ../images/castle-defense-game-flow.png Graphic file (type png)
+
+<use ../images/castle-defense-game-flow.png>
+Package pdftex.def Info: ../images/castle-defense-game-flow.png used on input l
+ine 80.
+(pdftex.def)             Requested size: 435.12456pt x 283.0568pt.
+Missing character: There is no ‚ in font cmr10!
+Missing character: There is no Ä in font cmr10!
+Missing character: There is no ú in font cmr10!
+Missing character: There is no ‚ in font cmr10!
+Missing character: There is no Ä in font cmr10!
+Missing character: There is no ù in font cmr10!
+ [3 <C:/Users/tktong/Documents/ECS 193/docs/images/castle-defense-game-flow.png
+>] [4]
 ("C:\Users\tktong\Documents\ECS 193\docs\design\design.aux") ) 
 Here is how much of TeX's memory you used:
- 279 strings out of 493921
- 3683 string characters out of 3144873
- 53031 words of memory out of 3000000
- 3634 multiletter control sequences out of 15000+200000
+ 1239 strings out of 493921
+ 16893 string characters out of 3144873
+ 68682 words of memory out of 3000000
+ 4556 multiletter control sequences out of 15000+200000
  8452 words of font info for 30 fonts, out of 3000000 for 9000
  841 hyphenation exceptions out of 8191
- 23i,12n,19p,753b,299s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 27i,12n,19p,908b,299s stack positions out of 5000i,500n,10000p,200000b,50000s
 <C:/Program Files
  (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Program Files (
 x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Program Files (x8
 6)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Program Files (x86)/
 MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr17.pfb><C:/Program Files (x86)/MiK
 TeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
-Output written on design.pdf (2 pages, 73543 bytes).
+Output written on design.pdf (4 pages, 124963 bytes).
 PDF statistics:
- 29 PDF objects out of 1000 (max. 8388607)
+ 38 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 1 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 6 words of extra memory for PDF output out of 10000 (max. 10000000)
 
