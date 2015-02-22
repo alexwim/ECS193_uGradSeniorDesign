@@ -23,3 +23,10 @@ project/*.exe
 Icon?
 ehthumbs.db
 Thumbs.db
+
+# ====================== #
+# LaTeX Generated Stuff  #
+# ====================== #
+docs/*.aux
+docs/*.log
+docs/*.synctex.gz
