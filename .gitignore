@@ -11,6 +11,14 @@ project/Library/*
 project/Assets/AssetStoreTools*
 project/*_Data
 project/*.exe
+*.unity.meta
+*.prefab.meta
+*.so.meta
+*.so.signature.meta
+*.txt.meta
+*.dll.meta
+*.bundle.meta
+
 
 # ================== #
 # OS Generated Stuff #
