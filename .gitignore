@@ -8,6 +8,7 @@ project/Temp/*
 project/Obj/*
 project/UnityGenerated/*
 project/Library/*
+project/Target/*
 project/Assets/AssetStoreTools*
 project/*_Data
 project/*.exe
