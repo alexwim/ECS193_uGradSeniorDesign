@@ -12,6 +12,7 @@ project/Target/*
 project/Assets/AssetStoreTools*
 project/*_Data
 project/*.exe
+project/ProjectSettings/*
 *.meta
 *.unity.meta
 *.prefab.meta
