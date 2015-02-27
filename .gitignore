@@ -1,39 +1,28 @@
-# Shamelessly taken from SO
-# Please update as necessary
+# ----- [ Unity Generated ] ----- #
+project/[Ll]ibrary/
+project/[Tt]emp/
+project/[Oo]bj/
+project/[Bb]uild/
+project/[Tt]arget/
 
-# ===================== #
-# Unity Generated Stuff #
-# ===================== #
-project/Temp/*
-project/Obj/*
-project/UnityGenerated/*
-project/Library/*
-project/Target/*
-project/Assets/AssetStoreTools*
-project/*_Data
-project/*.exe
-project/ProjectSettings/*
-*.meta
-*.unity.meta
-*.prefab.meta
-*.so.meta
-*.so.signature.meta
-*.txt.meta
-*.dll.meta
-*.bundle.meta
+# ----- [ Unity 3D Generated Meta Files ] ----- #
+*.pidb.meta
 
+# ----- [ Unity3D Generated File on Crash Reports ] ----- #
+sysinfo.txt
 
-# =========================== #
-# MonoDevelop Generated Stuff #
-# =========================== #
+# ----- [ Visual Studio/Monodevelop Solution and Project Files ] ----- #
 *.csproj
+*.unityproj
 *.sln
+*.suo
+*.tmp
+*.user
 *.userprefs
+*.pidb
+*.booproj
 
-
-# ================== #
-# OS Generated Stuff #
-# ================== #
+# ----- [ OS Generated ] ----- #
 .DS_Store
 .DS_Store?
 ._*
@@ -43,9 +32,7 @@ Icon?
 ehthumbs.db
 Thumbs.db
 
-# ====================== #
-# LaTeX Generated Stuff  #
-# ====================== #
+# ----- [ LaTeX Generated ] ----- #
 *.aux
 *.log
 *.synctex.gz
