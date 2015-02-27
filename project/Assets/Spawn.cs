@@ -6,7 +6,7 @@ public class Spawn : MonoBehaviour {
 	public Transform target;
 	public GameObject unit;
 	
-	public float spawnTime = .5f;
+	public float spawnTime = .1f;
 	float spawnTimeLeft = .5f;
 
 
@@ -18,7 +18,7 @@ public class Spawn : MonoBehaviour {
 			spawnTimeLeft = spawnTime;
 		}
 		else {
-			spawnTimeLeft -= Time.deltaTime;
+			spawnTimeLeft -= Time.deltaTime/10;
 		}
 	}
 }
