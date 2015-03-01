@@ -6,7 +6,7 @@ public class EnemyManager : MonoBehaviour {
 	public float spawnTime;
 	public Transform[] spawnPoints;
 
-	private void Start () {
+	public void StartRepeatSpawn() {
 		InvokeRepeating ("Spawn", spawnTime, spawnTime);
 	}
 
