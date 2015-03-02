@@ -2,8 +2,8 @@
 using System.Collections;
 
 public class EnemyAttack : MonoBehaviour {
-	public float rate = 0.5f;
-	public int damage = 10;
+	public float rate = 1f;
+	public int damage = 5;
 
 	private GameObject player;
 	private PlayerHealth playerHealth;
