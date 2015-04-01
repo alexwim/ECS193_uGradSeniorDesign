@@ -1,7 +1,173 @@
 \input{../config/config_default.tex}
 
+\usepackage{url}
+\usepackage{array}
+\usepackage{float}
+
+\newcolumntype{L}[1]{>{\raggedright\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+\newcolumntype{C}[1]{>{\centering\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+
 \begin{document}
 	
-\maketitle	
+\maketitle
+
+\section{Summary}
+
+\section{Resources Required}
+
+\subsection{Hardware Requirements}
+
+\begin{table}[h]
+	\renewcommand*{\arraystretch}{1.5}
+	\centering
+	\begin{tabular}{| l | l |}
+		\hline
+		Leap Motion			&	\url{https://leapmotion.com/}\\
+		\hline
+		Oculus Rift DK2		&	\url{https://oculus.com/dk2}\\
+		\hline
+	\end{tabular}
+\end{table}
+
+\subsection{Software Requirements}
+
+\begin{table}[h]
+	\renewcommand*{\arraystretch}{1.5}
+	\centering
+	\begin{tabular}{| c | c |}
+		\hline
+		Leap Motion SDK		&	2.2.2.24469\\
+		\hline
+		Oculus Rift SDK		&	0.4.4 Beta\\
+		\hline
+		Unity				&	4.6.1\\
+		\hline
+		Unity Test Tools	&	1.5\\
+		\hline
+	\end{tabular}
+\end{table}
+
+
+\section{Build Instructions}
+
+\begin{enumerate}
+	\item Checkout the Bitbucket repo: \url{git@bitbucket.org:ecs193/project.git}
+	\item Open the project in Unity, select "Build" using the default settings.
+	\item Run \textit{CastleDefense\_DirectToRift.exe}.
+\end{enumerate}
+
+\section{Issue Reporting Procedure}
+
+\begin{enumerate}
+	\item File an email report to \url{castledefense@gmail.com} with subject line ``[ECS 193 --- Issue]".
+	\item Provide a brief description of the issue.
+	\item If possible, provide screenshots and steps to reproduce the error.
+\end{enumerate}
+
+\section{Functional Testing}
+
+\subsection{Unit Testing}
+
+\begin{table}[H]
+	\renewcommand*{\arraystretch}{1.5}
+	\centering
+	\begin{tabular}{| c | c | C{6.2cm} | L{4cm} |}
+		\hline
+		Class/Entity	
+			&	Method	
+			&	Assertion	
+			&	Description\\
+		\hline
+		Castle			
+			&	Init()	
+			&	CurrentHealth == MaxHealth	
+			&	Assert that the castle starts with max health.\\
+		\hline
+			&	LoseHealth()	
+			&	CurrentHealth == (MaxHealth - \( \Delta \))	
+			&	Assert that the castle's health depletes and depletes by a correct amount.\\
+		\hline
+			&	GameOver()	
+			&	CurrentHealth == 0 \newline
+				GameOver.GUI == Activated	
+			&	Assert that the castle health is depleted and that the end game GUI has activated.\\
+		\hline
+		Enemy
+			&	Init()
+			&	CurrentHealth == MaxHealth \newline
+				Target == Castle
+			&	Assert that the enemy spawns with max health and that the enemy target is the player castle.\\
+		\hline
+			&	LoseHealth()
+			&	CurrentHealth == (MaxHealth - \( \Delta \))	
+			&	Assert that the castle's health depletes and depletes by a correct amount.\\
+		\hline
+			&	Death()
+			&	CurrentHealth == 0 \newline
+				Speed == 0 \newline
+				Verify(DeathAnimation).Called(1) \newline
+				Verify(this).deleted \newline
+			& Assert that the enemy health is 0. Assert that the enemy is no longer moving and that the death animation was called. Then assert that the enemy entity was deleted.\\
+		\hline
+		Enemy Manager
+			&	Spawn()		
+			&	SpawnPoints[] != NULL \newline
+				SpawnType != NULL \newline
+				Verify(Enemy.Spawn()).Called(1)
+			&	Assert that spawn points and spawn type is not NULL. Assert that an enemy was spawned or instantiated.\\
+		\hline
+			&	Spawn()
+			&	canSpawn == FALSE \newline
+				Verify(Enemy.Spawn()).Called(0)
+			& 	Assert that if the enemy manager is disabled that an enemy is not instantiated.\\
+		\hline
+	\end{tabular}
+\end{table}
+
+\subsection{Integration Testing}
+
+\begin{table}[H]
+	\renewcommand*{\arraystretch}{1.5}
+	\centering
+	\begin{tabular}{| c | c | C{6.2cm} | L{4cm} |}
+		\hline
+		Class/Entity	
+			&	Method	
+			&	Assertion	
+			&	Description\\
+		\hline
+		Castle			
+			&	GameOver()	
+			&	CurrentHealth == 0 \newline
+				GameOver.GUI == Activated \newline
+				EnemyManager.canSpawn == FALSE \newline
+				Enemy.disabled == TRUE
+			&	Assert the same requirements as unit testing. Also assert that the enemy manager spawn and enemies are disabled.\\
+		\hline
+		Enemy
+			&	Death()
+			&	CurrentHealth == 0 \newline
+				Speed == 0 \newline
+				Verify(DeathAnimation).Called(1) \newline
+				Verify(this).deleted \newline
+				Player.Score++
+			& Assert the same requirements as unit testing. Also assert that the player's score increases.\\
+		\hline
+	\end{tabular}
+\end{table}
+
+\section{Non-Functional Testing}
+
+\subsection{Security}
+
+Not applicable. This product does not contain client sensitive data. The issue of potential hacks into the game is a considerable issue. All Unity games execute through the Unity platform similarly to how Java executes in the Java Virtual Machine. By default, there is ``natural" security through this platform. Therefore, if our game was to be compromised, then the issue persists to the entire Unity platform, which falls under the jurisdiction of the Unity Security Team.
+
+\subsection{Fault Tolerance}
+
+Not applicable. The game does not perform any form of persistence.
+
+\subsection{Performance Testing}
+
+Build and run the game. Use the frame-per-second (FPS) counter to poll an average FPS. An average FPS below 30 is unacceptable. 
 
 \end{document}
