@@ -70,95 +70,144 @@ Castle Defense aims to provide the user with a fun and enjoyable gaming experien
 
 \section{Functional Testing}
 
+Functional testing will be verified by using automated testing and assertions on class or entity behavior. Unit testing involves the smallest unit possible which tests only the class or entity in question and will mock the behavior of classes it interacts with. Integration testing integrates all entities and creates assertions on specific behavior between the classes without mocked behavior or mocked objects.
+
 \subsection{Unit Testing}
+
+\subsubsection{Castle/Player Entity}
+
+\begin{table}[H]
+	\centering
+	\renewcommand*{\arraystretch}{1.5}
+	\begin{tabular}{ | c | C{6.3cm} | L{4cm} | }
+		\hline
+		Method
+			&	Assertion
+			&	Description\\
+		\hline
+		Initialize()
+			&	CurrentHealth == MaxHealth
+			&	Current health initializes with maximum value.\\
+		\hline
+		LoseHealth($\Delta$)
+			&	CurrentHealth == (MaxHealth - $\Delta$)
+			&	Current health decreases by a delta amount.\\
+		\hline
+		Die()
+			&	CurrentHealth == 0 \newline
+				Verify(LoseHealth(...)).Called(1)
+			&	Player health is 0 and that verify that the LoseHealth function was called that caused this death.\\
+		\hline
+		GameOver()
+			&	Verify(Die()).Called(1) \newline
+				GameOver\_GUI.alpha == 1
+			&	Verify that the die function was called and that the Game Over GUI becomes opaque.\\
+		\hline
+	\end{tabular}
+\end{table}
+
+\subsubsection{Enemy}
 
 \begin{table}[H]
 	\renewcommand*{\arraystretch}{1.5}
 	\centering
-	\begin{tabular}{| c | c | C{6.2cm} | L{4cm} |}
+	\begin{tabular}{ | c | C{6.2cm} | L{4cm} |}
 		\hline
-		Class/Entity	
-			&	Method	
-			&	Assertion	
-			&	Description\\
-		\hline
-		Castle			
-			&	Init()	
-			&	CurrentHealth == MaxHealth	
-			&	Assert that the castle starts with max health.\\
-		\hline
-			&	LoseHealth()	
-			&	CurrentHealth == (MaxHealth - \( \Delta \))	
-			&	Assert that the castle's health depletes and depletes by a correct amount.\\
-		\hline
-			&	GameOver()	
-			&	CurrentHealth == 0 \newline
-				GameOver.GUI == Activated	
-			&	Assert that the castle health is depleted and that the end game GUI has activated.\\
-		\hline
-		Enemy
-			&	Init()
+		Init()
 			&	CurrentHealth == MaxHealth \newline
-				Target == Castle
-			&	Assert that the enemy spawns with max health and that the enemy target is the player castle.\\
+				Target == Player
+			&	Assert that the enemy spawns with max health and that the enemy target is the player.\\
 		\hline
-			&	LoseHealth()
+		LoseHealth($\Delta$)
 			&	CurrentHealth == (MaxHealth - \( \Delta \))	
-			&	Assert that the castle's health depletes and depletes by a correct amount.\\
+			&	Assert that the castle's health depletes and depletes by a delta amount.\\
 		\hline
-			&	Death()
+		Death()
 			&	CurrentHealth == 0 \newline
 				Speed == 0 \newline
 				Verify(DeathAnimation).Called(1) \newline
 				Verify(this).deleted \newline
 			& Assert that the enemy health is 0. Assert that the enemy is no longer moving and that the death animation was called. Then assert that the enemy entity was deleted.\\
 		\hline
-		Enemy Manager
-			&	Spawn()		
-			&	SpawnPoints[] != NULL \newline
-				SpawnType != NULL \newline
-				Verify(Enemy.Spawn()).Called(1)
-			&	Assert that spawn points and spawn type is not NULL. Assert that an enemy was spawned or instantiated.\\
+	\end{tabular}
+\end{table}
+
+\subsubsection{Enemy Manager}
+
+\begin{table}[H]
+	\renewcommand*{\arraystretch}{1.5}
+	\centering
+	\begin{tabular}{ | c | C{7cm} | L{4cm} |}
 		\hline
-			&	Spawn()
-			&	canSpawn == FALSE \newline
-				Verify(Enemy.Spawn()).Called(0)
-			& 	Assert that if the enemy manager is disabled that an enemy is not instantiated.\\
+		Init()
+			&	SpawnPoints[] != NULL
+			&	Assert that the enemy manager has spawn points.\\
+		\hline
+		Spawn()
+			&	CanSpawn == TRUE \newline
+				Verify(SpawnPoint[i].Spawn()).Called(1)
+			&	Based on the boolean CanSpawn being true, verify that the spawn point called Spawn() once.\\
+		\hline
+		Spawn()
+			&	CanSpawn == FALSE \newline
+				Verify(SpawnPoint[i].Spawn()).Called(0)
+			& Based on the boolean CanSpawn being false, verify that the spawn point did not call Spawn().\\
+		\hline
+	\end{tabular}
+\end{table}
+
+\subsubsection{Enemy Spawn Point}
+
+\begin{table}[H]
+	\renewcommand*{\arraystretch}{1.5}
+	\centering
+	\begin{tabular}{ | c | C{6.2cm} | L{4cm} |}
+		\hline
+		Init()
+			&	SpawnType != NULL
+			&	Assert that the spawn point has a spawn type.\\
+		\hline
+		Spawn()
+			&	Instance(Enemy) != NULL
+			&	Assert that a new instance of enemy was created and is not NULL.\\
 		\hline
 	\end{tabular}
 \end{table}
 
 \subsection{Integration Testing}
 
+\subsubsection{Castle/Player Entity}
+
 \begin{table}[H]
 	\renewcommand*{\arraystretch}{1.5}
 	\centering
-	\begin{tabular}{| c | c | C{6.2cm} | L{4cm} |}
+	\begin{tabular}{ | c | C{7cm} | L{4cm} |}
 		\hline
-		Class/Entity	
-			&	Method	
-			&	Assertion	
-			&	Description\\
-		\hline
-		Castle			
-			&	GameOver()	
-			&	CurrentHealth == 0 \newline
-				GameOver.GUI == Activated \newline
+		GameOver()
+			&	... \newline
 				EnemyManager.canSpawn == FALSE \newline
-				Enemy.disabled == TRUE
-			&	Assert the same requirements as unit testing. Also assert that the enemy manager spawn and enemies are disabled.\\
-		\hline
-		Enemy
-			&	Death()
-			&	CurrentHealth == 0 \newline
-				Speed == 0 \newline
-				Verify(DeathAnimation).Called(1) \newline
-				Verify(this).deleted \newline
-				Player.Score++
-			& Assert the same requirements as unit testing. Also assert that the player's score increases.\\
+				Enemy.speed == 0 \newline
+				Enemy.canAttack == 0 
+			&	Aside from the same assertions as unit testing, assert that the enemy manager spawn is disabled and that enemies are disabled in both movement and attack abilities.\\
 		\hline
 	\end{tabular}
 \end{table}
+
+\subsubsection{Enemy}
+
+\begin{table}[H]
+	\renewcommand*{\arraystretch}{1.5}
+	\centering
+	\begin{tabular}{ | c | C{7cm} | L{4cm} |}
+		\hline
+		Death()
+			&	... \newline
+				New Player.Score == Old Player.Score + Value
+			&	Make the same assertions as unit test. Also assert that the player's score increases by the enemy value.\\
+		\hline
+	\end{tabular}
+\end{table}
+
 
 \section{Non-Functional Testing}
 
