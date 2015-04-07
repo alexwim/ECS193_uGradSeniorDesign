@@ -38,6 +38,7 @@ public class MagneticPinch : MonoBehaviour {
           !close_things[j].transform.IsChildOf(transform)) {
         grabbed_ = close_things[j];
         distance = new_distance;
+				Debug.Log("Pinched! " + new_distance.magnitude);
       }
     }
   }
