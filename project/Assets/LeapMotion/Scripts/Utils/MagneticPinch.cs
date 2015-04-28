@@ -6,6 +6,7 @@
 
 using UnityEngine;
 using System.Collections;
+using System.Text.RegularExpressions;
 using Leap;
 
 // Leap Motion hand script that detects pinches and grabs the
@@ -35,10 +36,11 @@ public class MagneticPinch : MonoBehaviour {
     for (int j = 0; j < close_things.Length; ++j) {
       Vector3 new_distance = pinch_position - close_things[j].transform.position;
       if (close_things[j].rigidbody != null && new_distance.magnitude < distance.magnitude &&
-          !close_things[j].transform.IsChildOf(transform)) {
+          !close_things[j].transform.IsChildOf(transform) &&
+			    // Only grab things that match the following regex!
+		  Regex.IsMatch(close_things[j].name, ".*Enemy\\(Clone\\)", RegexOptions.IgnoreCase) ){
         grabbed_ = close_things[j];
         distance = new_distance;
-				Debug.Log("Pinched! " + new_distance.magnitude);
       }
     }
   }
