@@ -4,6 +4,8 @@ using System.Collections;
 public class EnemyMovement : MonoBehaviour {
   private Transform player;
   private NavMeshAgent navMeshAgent;
+
+  [HideInInspector]
   public bool inControl;
 
   private void Awake () {
