@@ -4,6 +4,11 @@ project/[Tt]emp/
 project/[Oo]bj/
 project/[Bb]uild/
 project/[Tt]arget/
+project-unity5/[Ll]ibrary/
+project-unity5/[Tt]emp/
+project-unity5/[Oo]bj/
+project-unity5/[Bb]uild/
+project-unity5/[Tt]arget/
 
 # ----- [ Unity 3D Generated Meta Files ] ----- #
 *.pidb.meta
