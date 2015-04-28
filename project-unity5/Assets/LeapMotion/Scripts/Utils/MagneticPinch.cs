@@ -38,20 +38,20 @@ public class MagneticPinch : MonoBehaviour {
           !close_things[j].transform.IsChildOf(transform)) {
         grabbed_ = close_things[j];
         distance = new_distance;
-        grabbed_.GetComponent<EnemyMovement>().inControl = false;
+        grabbed_.GetComponent<EnemyMovement>().grabbed = true;
       }
     }
   }
 
 	void OnDestroy() {
 		if (grabbed_ != null) {
-      grabbed_.GetComponent<EnemyMovement>().inControl = true;
+      grabbed_.GetComponent<EnemyMovement>().grabbed = false;
 		}
 	}
 
   void OnRelease() {
 	  if (grabbed_ != null) {
-			grabbed_.GetComponent<EnemyMovement>().inControl = true;
+			grabbed_.GetComponent<EnemyMovement>().grabbed = false;
 		}
 
     grabbed_ = null;

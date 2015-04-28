@@ -6,19 +6,24 @@ public class EnemyMovement : MonoBehaviour {
   private NavMeshAgent navMeshAgent;
 
   [HideInInspector]
-  public bool inControl;
+  public bool grabbed;
 
   private void Awake () {
-    inControl = true;
+    grabbed = false;
     player = GameObject.FindGameObjectWithTag ("Player").transform;
     navMeshAgent = GetComponent<NavMeshAgent> ();
   }
 
-  private void Update () {
-    if (!inControl) {
-      navMeshAgent.enabled = false;
-    } else if (!navMeshAgent.enabled && inControl) {
+  private void OnCollisionEnter (Collision collision) {
+    if (!navMeshAgent.enabled && collision.gameObject.name == "Terrain") {
       navMeshAgent.enabled = true;
+      transform.localPosition = new Vector3(transform.localPosition.x, 0.0f, transform.localPosition.z);
+    }
+  }
+
+  private void Update () {
+    if (grabbed) {
+      navMeshAgent.enabled = false;
     }
 
     if (navMeshAgent.enabled) {
