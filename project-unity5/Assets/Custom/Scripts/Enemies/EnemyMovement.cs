@@ -6,9 +6,8 @@ public class EnemyMovement : MonoBehaviour {
 	private NavMeshAgent navMeshAgent;
 
 	private void Awake() {
-		player = GameObject.FindGameObjectWithTag ("Castle").transform;
+		player = GameObject.FindGameObjectWithTag ("Player").transform;
 		navMeshAgent = GetComponent<NavMeshAgent> ();
-		Debug.Log (navMeshAgent.enabled);
 	}
 
 	private void Update() {

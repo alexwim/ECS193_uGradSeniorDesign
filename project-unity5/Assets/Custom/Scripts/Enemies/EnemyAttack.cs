@@ -38,6 +38,8 @@ public class EnemyAttack : MonoBehaviour {
 	private void Attack() {
 		timer = 0f;
 
-		playerHealth.TakeDamage (damage);
+		if (playerHealth != null) {
+			playerHealth.TakeDamage (damage);
+		}
 	}
 }

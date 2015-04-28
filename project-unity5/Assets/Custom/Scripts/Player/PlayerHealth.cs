@@ -12,15 +12,21 @@ public class PlayerHealth : MonoBehaviour {
 
 	private void Awake() {
 		health = maxHealth;
-		healthSlider.value = health;
-		healthSlider.maxValue = maxHealth;
 		isDead = false;
+
+		if (healthSlider != null) {
+			healthSlider.value = health;
+			healthSlider.maxValue = maxHealth;
+		}
 	}
 
 	public void TakeDamage(int amount) {
 		if (!isDead) {
 			health -= amount;
-			healthSlider.value = health;
+
+			if (healthSlider != null) {
+				healthSlider.value = health;
+			}
 
 			if(health <= 0) {
 				Death();
