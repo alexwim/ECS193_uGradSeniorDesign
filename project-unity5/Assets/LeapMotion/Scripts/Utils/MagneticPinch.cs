@@ -38,20 +38,20 @@ public class MagneticPinch : MonoBehaviour {
           !close_things[j].transform.IsChildOf(transform)) {
         grabbed_ = close_things[j];
         distance = new_distance;
-		    grabbed_.GetComponent<NavMeshAgent>().enabled = false;
+        grabbed_.GetComponent<EnemyMovement>().inControl = false;
       }
     }
   }
 
 	void OnDestroy() {
 		if (grabbed_ != null) {
-			grabbed_.GetComponent<NavMeshAgent> ().enabled = true;
+      grabbed_.GetComponent<EnemyMovement>().inControl = true;
 		}
 	}
 
   void OnRelease() {
 	  if (grabbed_ != null) {
-			grabbed_.GetComponent<NavMeshAgent>().enabled = true;
+			grabbed_.GetComponent<EnemyMovement>().inControl = true;
 		}
 
     grabbed_ = null;
