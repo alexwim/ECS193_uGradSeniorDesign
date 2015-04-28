@@ -43,12 +43,20 @@ public class MagneticPinch : MonoBehaviour {
 		  Regex.IsMatch(close_things[j].name, grabbableNames + "\\(Clone\\)", RegexOptions.IgnoreCase) ){
         grabbed_ = close_things[j];
         distance = new_distance;
+        grabbed_.GetComponent<NavMeshAgent>().enabled = false;
         Debug.Log("Attempting to pinch: " + close_things[j].name);
       }
     }
   }
 
+  void OnDestroy() {
+    if (grabbed_ != null) {
+      grabbed_.GetComponent<NavMeshAgent> ().enabled = true;
+    }
+  }
+
   void OnRelease() {
+    grabbed_.GetComponent<NavMeshAgent>().enabled = true;
     grabbed_ = null;
     pinching_ = false;
   }
