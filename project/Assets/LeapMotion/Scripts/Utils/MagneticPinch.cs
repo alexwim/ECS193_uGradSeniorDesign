@@ -15,6 +15,8 @@ public class MagneticPinch : MonoBehaviour {
 
   public const float TRIGGER_DISTANCE_RATIO = 0.7f;
 
+
+  public string grabbableNames = ".*Enemy.*";
   public float forceSpringConstant = 100.0f;
   public float magnetDistance = 2.0f;
 
@@ -38,9 +40,10 @@ public class MagneticPinch : MonoBehaviour {
       if (close_things[j].rigidbody != null && new_distance.magnitude < distance.magnitude &&
           !close_things[j].transform.IsChildOf(transform) &&
 			    // Only grab things that match the following regex!
-		  Regex.IsMatch(close_things[j].name, ".*Enemy\\(Clone\\)", RegexOptions.IgnoreCase) ){
+		  Regex.IsMatch(close_things[j].name, grabbableNames + "\\(Clone\\)", RegexOptions.IgnoreCase) ){
         grabbed_ = close_things[j];
         distance = new_distance;
+        Debug.Log("Attempting to pinch: " + close_things[j].name);
       }
     }
   }
