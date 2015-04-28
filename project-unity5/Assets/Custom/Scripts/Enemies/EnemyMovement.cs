@@ -15,7 +15,7 @@ public class EnemyMovement : MonoBehaviour {
   }
 
   private void OnCollisionEnter (Collision collision) {
-    if (!navMeshAgent.enabled && collision.gameObject.name == "Terrain") {
+    if (!grabbed && !navMeshAgent.enabled && collision.gameObject.name == "Terrain") {
       navMeshAgent.enabled = true;
       transform.localPosition = new Vector3(transform.localPosition.x, 0.0f, transform.localPosition.z);
     }
