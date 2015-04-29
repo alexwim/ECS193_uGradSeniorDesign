@@ -42,6 +42,7 @@ public class MagneticPinch : MonoBehaviour {
         grabbed_ = close_things[j];
         distance = new_distance;
         grabbed_.GetComponent<EnemyMovement>().grabbed = true;
+        break;
       }
     }
   }

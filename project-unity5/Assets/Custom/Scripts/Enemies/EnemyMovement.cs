@@ -15,6 +15,7 @@ public class EnemyMovement : MonoBehaviour {
   }
 
   private void OnCollisionEnter (Collision collision) {
+    // This re-enables the navmesh once an enemy hits the ground after a long toss.
     if (!grabbed && !navMeshAgent.enabled && collision.gameObject.name == "Terrain") {
       navMeshAgent.enabled = true;
     }
@@ -24,9 +25,9 @@ public class EnemyMovement : MonoBehaviour {
     if (grabbed) {
       navMeshAgent.enabled = false;
       return;
-    }
-
-    if (navMeshAgent.enabled) {
+    } else if (transform.position.y < 0.9f) { // In case the enemies can't collide against the terrain, ie they're laying the ground.
+      navMeshAgent.enabled = true;
+    } else if (navMeshAgent.enabled) {
       navMeshAgent.SetDestination (player.position);
     }
   }
