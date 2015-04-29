@@ -19,6 +19,15 @@ project-unity5/*_[Dd]ata/
 sysinfo.txt
 
 # ----- [ Visual Studio/Monodevelop Solution and Project Files ] ----- #
+project/*.csproj
+project/*.unityproj
+project/*.sln
+project/*.suo
+project/*.tmp
+project/*.user
+project/*.userprefs
+project/*.pidb
+project/*.booproj
 project-unity5/*.csproj
 project-unity5/*.unityproj
 project-unity5/*.sln
