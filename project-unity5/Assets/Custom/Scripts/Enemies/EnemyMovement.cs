@@ -3,6 +3,7 @@ using System.Collections;
 
 public class EnemyMovement : MonoBehaviour {
   private Transform player;
+  private BoxCollider playerCollider;
   private NavMeshAgent navMeshAgent;
 
   [HideInInspector]
@@ -11,6 +12,7 @@ public class EnemyMovement : MonoBehaviour {
   private void Awake () {
     grabbed = false;
     player = GameObject.FindGameObjectWithTag ("Player").transform;
+    playerCollider = player.GetComponent<BoxCollider> ();
     navMeshAgent = GetComponent<NavMeshAgent> ();
   }
 
@@ -34,7 +36,7 @@ public class EnemyMovement : MonoBehaviour {
     } else if (transform.position.y < 0.9f) { // In case the enemies can't collide against the terrain, ie they're laying the ground.
       RegainControl ();
     } else if (navMeshAgent.enabled) {
-      navMeshAgent.SetDestination (player.position);
+      navMeshAgent.SetDestination (playerCollider.ClosestPointOnBounds(transform.position));
     }
   }
 }

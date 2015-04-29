@@ -120,26 +120,26 @@
         bfudge *= bfudge;
         //irfudge *= irfudge;
        
-        float4 gl_FragColor;
+        float4 agl_FragColor;
         
-        gl_FragColor.r = rfudge*output_lf_fudge.r + (1-rfudge)*output_lf.r;
-        gl_FragColor.g = gfudge*output_lf_fudge.g + (1-gfudge)*output_lf.g;
-        gl_FragColor.b = bfudge*output_lf_fudge.b + (1-bfudge)*output_lf.b;
+        agl_FragColor.r = rfudge*output_lf_fudge.r + (1-rfudge)*output_lf.r;
+        agl_FragColor.g = gfudge*output_lf_fudge.g + (1-gfudge)*output_lf.g;
+        agl_FragColor.b = bfudge*output_lf_fudge.b + (1-bfudge)*output_lf.b;
 
-        gl_FragColor.r *= rscale;
-        gl_FragColor.g *= gscale;
-        gl_FragColor.b *= bscale;
+        agl_FragColor.r *= rscale;
+        agl_FragColor.g *= gscale;
+        agl_FragColor.b *= bscale;
        
         //float avgrgb = 0.33333*(input_lf.r + input_lf.g + input_lf.b) - 0.9*input_lf.a;
         //float threshold = min(1, avgrgb*100);
         //threshold *= threshold;
-        //gl_FragColor.rgb = output_lf_gray.rgb*(1 - threshold) + gl_FragColor.rgb*(threshold);
+        //agl_FragColor.rgb = output_lf_gray.rgb*(1 - threshold) + agl_FragColor.rgb*(threshold);
        
         float gamma = 1.0/_GammaCorrection;
-        //gl_FragColor.rgb = show_ir > 0.5 ? float3(pow(ir_out, gamma)): pow(gl_FragColor.rgb, float3(gamma));
+        //agl_FragColor.rgb = show_ir > 0.5 ? float3(pow(ir_out, gamma)): pow(agl_FragColor.rgb, float3(gamma));
         
-        gl_FragColor = float4(pow(gl_FragColor.rgb, float(gamma)), 1.0);
-        return gl_FragColor;
+        agl_FragColor = float4(pow(agl_FragColor.rgb, float(gamma)), 1.0);
+        return agl_FragColor;
       }
       
       struct fragment_input{

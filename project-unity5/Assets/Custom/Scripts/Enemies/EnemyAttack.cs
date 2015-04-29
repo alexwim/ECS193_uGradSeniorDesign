@@ -4,33 +4,28 @@ using System.Collections;
 public class EnemyAttack : MonoBehaviour {
 	public float rate = 1f;
 	public int damage = 5;
+	public float range = 2f;
 
 	private GameObject player;
 	private PlayerHealth playerHealth;
-	private bool playerInRange;
+	private Collider playerCollider;
 	private float timer;
 
 	private void Awake() {
 		player = GameObject.FindGameObjectWithTag ("Player");
 		playerHealth = player.GetComponent<PlayerHealth> ();
+		playerCollider = player.GetComponent<Collider> ();
 	}
 
-	private void OnTriggerEnter(Collider other) {
-		if (other.gameObject == player) {
-			playerInRange = true;
-		}
-	}
-
-	private void OnTriggerExit(Collider other) {
-		if(other.gameObject == player) {
-			playerInRange = false;
-		}
+	private bool IsInRange() {
+		float currentDistance = Vector3.Distance (playerCollider.ClosestPointOnBounds (transform.position), transform.position) - + transform.GetComponent<CapsuleCollider> ().radius;
+		return range > currentDistance;
 	}
 
 	private void Update() {
 		timer += Time.deltaTime;
 
-		if(timer >= rate && playerInRange) {
+		if(timer >= rate && IsInRange()) {
 			Attack();
 		}
 	}
@@ -38,8 +33,6 @@ public class EnemyAttack : MonoBehaviour {
 	private void Attack() {
 		timer = 0f;
 
-		if (playerHealth != null) {
-			playerHealth.TakeDamage (damage);
-		}
+		playerHealth.TakeDamage (damage);
 	}
 }
