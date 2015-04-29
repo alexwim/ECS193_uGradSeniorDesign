@@ -4,33 +4,33 @@ using UnityEngine.UI;
 
 
 public class PlayerHealth : MonoBehaviour {
+	[HideInInspector]
 	public int health;
 	public int maxHealth = 100;
-	public Slider healthSlider;
+	public Image healthBar;
 
 	private bool isDead;
 
 	private void Awake() {
 		health = maxHealth;
 		isDead = false;
-
-		if (healthSlider != null) {
-			healthSlider.value = health;
-			healthSlider.maxValue = maxHealth;
-		}
 	}
 
 	public void TakeDamage(int amount) {
 		if (!isDead) {
+			healthBar.fillAmount = Mathf.MoveTowards(health, health-amount, health)/maxHealth;
 			health -= amount;
-
-			if (healthSlider != null) {
-				healthSlider.value = health;
-			}
 
 			if(health <= 0) {
 				Death();
 			}
+		}
+	}
+
+	public void HealDamage(int amount) {
+		if (!isDead) {
+			healthBar.fillAmount = Mathf.MoveTowards(health, health+amount, maxHealth-health)/maxHealth;
+			health += amount;
 		}
 	}
 
