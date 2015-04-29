@@ -4,7 +4,7 @@ using System.Collections;
 public class EnemyAttack : MonoBehaviour {
 	public float rate = 1f;
 	public int damage = 5;
-	public float range = 2f;
+	public float range = 0.2f;
 
 	private GameObject player;
 	private PlayerHealth playerHealth;
