@@ -19,15 +19,15 @@ project-unity5/*_[Dd]ata/
 sysinfo.txt
 
 # ----- [ Visual Studio/Monodevelop Solution and Project Files ] ----- #
-*.csproj
-*.unityproj
-*.sln
-*.suo
-*.tmp
-*.user
-*.userprefs
-*.pidb
-*.booproj
+project-unity5/*.csproj
+project-unity5/*.unityproj
+project-unity5/*.sln
+project-unity5/*.suo
+project-unity5/*.tmp
+project-unity5/*.user
+project-unity5/*.userprefs
+project-unity5/*.pidb
+project-unity5/*.booproj
 
 # ----- [ OS Generated ] ----- #
 .DS_Store
