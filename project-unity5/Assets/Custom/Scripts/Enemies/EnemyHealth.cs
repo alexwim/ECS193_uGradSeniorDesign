@@ -6,7 +6,15 @@ public class EnemyHealth : MonoBehaviour {
 	public Vector3 droppedPosition;
 
 	private void OnCollisionEnter (Collision collision) {
-		if (droppedPosition.y > 0 && collision.gameObject.name == "Terrain") {
+		if (droppedPosition.y > 0) {
+			Debug.Log ("I FELL");
+			ContactPoint contact = collision.contacts[0];
+			Vector3 normal = contact.normal;
+			Vector3 relativeVelocity = collision.relativeVelocity;
+
+			float damage = Vector3.Dot (normal, relativeVelocity);
+
+			Debug.Log(damage);
 			droppedPosition.y = 0; // reset after drop
 			death ();
 		}
