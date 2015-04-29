@@ -3,10 +3,10 @@ using System.Collections;
 using VRWidgets;
 
 public class StartButton : ButtonBase {
-	public EnemyManager enemyManager;
+	public GameManager gameManager;
 
 	public override void ButtonPressed() {
-		enemyManager.StartRepeatSpawn();
+		gameManager.StartGame ();
 		Destroy (transform.parent.gameObject);
 		Debug.Log("Start button pressed");
 	}
