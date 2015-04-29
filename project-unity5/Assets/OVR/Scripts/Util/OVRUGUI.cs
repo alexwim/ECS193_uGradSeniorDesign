@@ -245,7 +245,9 @@ public class OVRUGUI
     {
         gameObject = ComponentComposition(gameObject);
         gameObject.name = name;
-        gameObject.transform.parent = NewGUIManager.transform;
+		gameObject.transform.SetParent (NewGUIManager.transform);
+        //gameObject.transform.parent = NewGUIManager.transform; 
+		// direct setting of parent is deprecated
 
 		RectTransform r = gameObject.GetComponent<RectTransform>();
         r.localPosition = new Vector3(0.0f, posY -= offsetY, 0.0f);

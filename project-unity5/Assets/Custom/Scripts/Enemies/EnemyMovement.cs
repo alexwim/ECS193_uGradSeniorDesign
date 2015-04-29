@@ -20,12 +20,12 @@ public class EnemyMovement : MonoBehaviour {
     navMeshAgent.enabled = true;
   }
 
-  private void OnCollisionEnter (Collision collision) {
-    // This re-enables the navmesh once an enemy hits the ground after a long toss.
-    if (!grabbed && !navMeshAgent.enabled && collision.gameObject.name == "Terrain") {
-      RegainControl ();
-    }
-  }
+	private void OnCollisionEnter (Collision collision) {
+		// This re-enables the navmesh once an enemy hits the ground after a long toss.
+		if (!grabbed && !navMeshAgent.enabled && collision.gameObject.name == "Terrain") {
+			RegainControl ();
+		}
+	}
 
   private void Update () {
     if (grabbed) {

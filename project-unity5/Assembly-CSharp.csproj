@@ -47,6 +47,7 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\Custom\Scripts\Enemies\EnemyAttack.cs" />
+     <Compile Include="Assets\Custom\Scripts\Enemies\EnemyHealth.cs" />
      <Compile Include="Assets\Custom\Scripts\Enemies\EnemyMovement.cs" />
      <Compile Include="Assets\Custom\Scripts\HUD\StartButton.cs" />
      <Compile Include="Assets\Custom\Scripts\Managers\EnemyManager.cs" />

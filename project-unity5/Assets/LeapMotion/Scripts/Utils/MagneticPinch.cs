@@ -51,14 +51,15 @@ public class MagneticPinch : MonoBehaviour {
 
 	void OnDestroy() {
 		if (grabbed_ != null) {
-      grabbed_.GetComponent<EnemyMovement>().grabbed = false;
+      		grabbed_.GetComponent<EnemyMovement>().grabbed = false;
 		}
 	}
 
   void OnRelease() {
-	  if (grabbed_ != null) {
-      grabbed_.GetComponent<EnemyMovement>().grabbed = false;
-		}
+	if (grabbed_ != null) {
+      	grabbed_.GetComponent<EnemyMovement>().grabbed = false;
+		grabbed_.GetComponent<EnemyHealth>().droppedPosition = grabbed_.transform.position;
+	}
 
     grabbed_ = null;
     pinching_ = false;
