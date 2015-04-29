@@ -18,7 +18,7 @@ public class EnemyAttack : MonoBehaviour {
 	}
 
 	private bool IsInRange() {
-		float currentDistance = Vector3.Distance (playerCollider.ClosestPointOnBounds (transform.position), transform.position) - + transform.GetComponent<CapsuleCollider> ().radius;
+		float currentDistance = Vector3.Distance (playerCollider.ClosestPointOnBounds (transform.position), transform.position) - transform.GetComponent<CapsuleCollider> ().radius;
 		return range > currentDistance;
 	}
 

@@ -13,13 +13,15 @@ public class Enemy : MonoBehaviour {
 
 	[HideInInspector]
 	public Vector3 droppedPosition;
+	[HideInInspector]
+	public bool grabbed = false;
 
 	private float timer;
 
 	public int health = 100;
 	public float rate = 1f;
 	public int damage = 5;
-	public float range = 0.2f;
+	public float range = 1f;
 
 	private void Awake() {
 		player = GameObject.FindGameObjectWithTag ("Player");
@@ -32,13 +34,13 @@ public class Enemy : MonoBehaviour {
 	}
 	
 	private void Update() {
-		if (!navMeshAgent.enabled) {
+		if (grabbed) {
+			navMeshAgent.enabled = false;
 			return;
 		} else if (IsSideways ()) {
 			RegainControl ();
-		} else {
+		} else if (navMeshAgent.enabled){
 			navMeshAgent.SetDestination (playerCollider.ClosestPointOnBounds(transform.position));
-
 			timer += Time.deltaTime;
 			
 			if(timer >= rate && IsInRange()) {
@@ -48,23 +50,24 @@ public class Enemy : MonoBehaviour {
 	}
 
 	private void OnCollisionEnter (Collision collision) {
-		if (droppedPosition.y > 0) {
-			ContactPoint contact = collision.contacts[0];
-			Vector3 normal = contact.normal;
-			Vector3 relativeVelocity = collision.relativeVelocity;
-			
-			double damage = Vector3.Dot (normal, relativeVelocity) * 9.8;
-
-			health -= (int) damage;
-
-			droppedPosition.y = 0; // reset after drop
-
-			if(health <= 0) {
-				Destroy (gameObject);
+		if ((!grabbed) && (!navMeshAgent.enabled) && (TERRAIN_NAME == collision.gameObject.name)) {
+			if(droppedPosition.y > 1) {
+				ContactPoint contact = collision.contacts[0];
+				Vector3 normal = contact.normal;
+				Vector3 relativeVelocity = collision.relativeVelocity;
+				
+				double damage = Vector3.Dot (normal, relativeVelocity) * GetComponent<Rigidbody>().mass;
+				
+				health -= (int) damage;
+				
+				droppedPosition.y = 0; // reset after drop
+				
+				if(health <= 0) {
+					gameObject.GetComponentInParent<EnemyManager>().enemiesAlive -= 1;
+					Destroy (gameObject);
+				}
 			}
-		}
 
-		if ((!navMeshAgent.enabled) && (TERRAIN_NAME == collision.gameObject.name)) {
 			RegainControl();
 		}
 	}
@@ -84,7 +87,7 @@ public class Enemy : MonoBehaviour {
 	private bool IsInRange() {
 		Vector3 closestPosition = playerCollider.ClosestPointOnBounds (transform.position);
 
-		float currentDistance = Vector3.Distance (closestPosition, transform.position) - + CAPSULE_COLLIDER_RADIUS;
+		float currentDistance = Vector3.Distance (closestPosition, transform.position) - CAPSULE_COLLIDER_RADIUS;
 
 		return (range >= currentDistance);
 	}

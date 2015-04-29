@@ -224,7 +224,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1180, y: 0, z: 1180}
+  m_Size: {x: 1100, y: 0, z: 1100}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!33 &128772652
 MeshFilter:
@@ -443,6 +443,9 @@ MonoBehaviour:
   - {fileID: 702395475}
   - {fileID: 1525024302}
   - {fileID: 151292368}
+  enemiesSpawned: 0
+  enemiesAlive: 0
+  isSpawning: 0
 --- !u!1 &547941961
 GameObject:
   m_ObjectHideFlags: 0
@@ -471,6 +474,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyManager: {fileID: 506997246}
+  enemiesPerWave: 1
+  timeBetweenWaves: 3
 --- !u!4 &547941963
 Transform:
   m_ObjectHideFlags: 0

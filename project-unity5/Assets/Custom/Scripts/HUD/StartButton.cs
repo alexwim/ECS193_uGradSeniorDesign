@@ -6,9 +6,9 @@ public class StartButton : ButtonBase {
 	public GameManager gameManager;
 
 	public override void ButtonPressed() {
+		Debug.Log("Start button pressed");
 		gameManager.StartGame ();
 		Destroy (transform.parent.gameObject);
-		Debug.Log("Start button pressed");
 	}
 
 	public override void ButtonReleased() {
