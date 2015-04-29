@@ -18,12 +18,19 @@ public class PlayerHealth : MonoBehaviour {
 
 	public void TakeDamage(int amount) {
 		if (!isDead) {
-			health -= amount;
 			healthBar.fillAmount = Mathf.MoveTowards(health, health-amount, health)/maxHealth;
+			health -= amount;
 
 			if(health <= 0) {
 				Death();
 			}
+		}
+	}
+
+	public void HealDamage(int amount) {
+		if (!isDead) {
+			healthBar.fillAmount = Mathf.MoveTowards(health, health+amount, maxHealth-health)/maxHealth;
+			health += amount;
 		}
 	}
 
