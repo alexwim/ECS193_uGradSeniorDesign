@@ -13,9 +13,7 @@ GameObject:
   - 23: {fileID: 2333564}
   - 195: {fileID: 19533564}
   - 54: {fileID: 5433564}
-  - 114: {fileID: 11433564}
-  - 114: {fileID: 11487792}
-  - 114: {fileID: 11487196}
+  - 114: {fileID: 11427432}
   m_Layer: 0
   m_Name: BasicEnemy
   m_TagString: Untagged
@@ -81,7 +79,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 2
---- !u!114 &11433564
+--- !u!114 &11427432
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -89,34 +87,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 133564}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 28779146d256b424d814775f293ca7fa, type: 3}
+  m_Script: {fileID: 11500000, guid: 05f8da6becc42a547b650f8d782e7b2f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  grabbed: 0
---- !u!114 &11487196
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 133564}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4399e69c05d0ad41a404b374345f997, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  health: 100
   droppedPosition: {x: 0, y: 0, z: 0}
---- !u!114 &11487792
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 133564}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 311b5d3133e4d0644b666061d7326892, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  health: 100
   rate: 1
   damage: 5
   range: .200000003
