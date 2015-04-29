@@ -42,6 +42,8 @@ public class MagneticPinch : MonoBehaviour {
         grabbed_ = close_things[j];
         distance = new_distance;
         grabbed_.GetComponent<EnemyMovement>().grabbed = true;
+        grabbed_.GetComponent<Rigidbody>().isKinematic = false;
+        grabbed_.GetComponent<Rigidbody>().useGravity = true;
         break;
       }
     }
@@ -55,7 +57,7 @@ public class MagneticPinch : MonoBehaviour {
 
   void OnRelease() {
 	  if (grabbed_ != null) {
-			grabbed_.GetComponent<EnemyMovement>().grabbed = false;
+      grabbed_.GetComponent<EnemyMovement>().grabbed = false;
 		}
 
     grabbed_ = null;
