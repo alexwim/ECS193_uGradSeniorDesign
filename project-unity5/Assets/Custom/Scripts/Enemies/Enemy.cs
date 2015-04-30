@@ -4,12 +4,15 @@ using System.Collections;
 public class Enemy : MonoBehaviour {
 	private const string TERRAIN_NAME = "Terrain";
 	private float CAPSULE_COLLIDER_RADIUS;
+	private const float range = 2.0f;
 
 	private GameObject player;
 	private Transform playerTransform;
 	private PlayerHealth playerHealth;
 	private BoxCollider playerCollider;
 	private NavMeshAgent navMeshAgent;
+
+	private Animator animator;
 
 	[HideInInspector]
 	public Vector3 droppedPosition;
@@ -21,7 +24,6 @@ public class Enemy : MonoBehaviour {
 	public int health = 100;
 	public float rate = 1f;
 	public int damage = 5;
-	public float range = 1f;
 
 	private void Awake() {
 		player = GameObject.FindGameObjectWithTag ("Player");
@@ -29,22 +31,40 @@ public class Enemy : MonoBehaviour {
 		playerHealth = player.GetComponent<PlayerHealth> ();
 		playerCollider = player.GetComponent<BoxCollider> ();
 		navMeshAgent = GetComponent<NavMeshAgent> ();
+		animator = GetComponent<Animator> ();
+		animator.speed = 0.5f;
 
 		CAPSULE_COLLIDER_RADIUS = transform.GetComponent<CapsuleCollider>().radius;
+
+		Debug.Log ("AWAKE(range): " + range);
 	}
 	
 	private void Update() {
 		if (grabbed) {
 			navMeshAgent.enabled = false;
 			return;
-		} else if (IsSideways ()) {
+		} else if (IsSideways () && false) {
+			Debug.Log ("Sideways Detection: " + transform.position.y);
 			RegainControl ();
 		} else if (navMeshAgent.enabled){
 			navMeshAgent.SetDestination (playerCollider.ClosestPointOnBounds(transform.position));
+
 			timer += Time.deltaTime;
-			
-			if(timer >= rate && IsInRange()) {
-				Attack();
+
+			Debug.Log ("Nav Mesh Enabled");
+
+			if(IsInRange ()) {
+				Debug.Log ("In Range");
+				if(timer >= rate) {
+					Attack ();
+					animator.Play("Attacking");
+				}
+			//	else {
+			//		animator.Play ("Idle");
+			//	}
+			}
+			else {
+				animator.Play ("Walking");
 			}
 		}
 	}
@@ -88,7 +108,7 @@ public class Enemy : MonoBehaviour {
 		Vector3 closestPosition = playerCollider.ClosestPointOnBounds (transform.position);
 
 		float currentDistance = Vector3.Distance (closestPosition, transform.position) - CAPSULE_COLLIDER_RADIUS;
-
+		Debug.Log ("Current Distance : " + currentDistance + "; range : " + range + "; bool : " + (range >= currentDistance));
 		return (range >= currentDistance);
 	}
 
