@@ -38,6 +38,7 @@ public class MagneticPinch : MonoBehaviour {
       if (close_things[j].GetComponent<Rigidbody>() != null && new_distance.magnitude < distance.magnitude &&
           !close_things[j].transform.IsChildOf(transform) &&
           Regex.IsMatch(close_things[j].name, "\\(Clone\\)", RegexOptions.IgnoreCase)) {
+		Debug.Log ("Grabbed!");
         grabbed_ = close_things[j];
         distance = new_distance;
 		grabbed_.GetComponent<Enemy>().grabbed = true;
@@ -52,6 +53,7 @@ public class MagneticPinch : MonoBehaviour {
 		if (grabbed_ != null) {
 			grabbed_.GetComponent<Enemy>().grabbed = false;
 			grabbed_.GetComponent<Enemy>().droppedPosition = grabbed_.transform.position;
+			Debug.Log ("Let go!");
 		}
 
 		grabbed_ = null;
@@ -62,6 +64,7 @@ public class MagneticPinch : MonoBehaviour {
 	if (grabbed_ != null) {
 		grabbed_.GetComponent<Enemy>().grabbed = false;
 		grabbed_.GetComponent<Enemy>().droppedPosition = grabbed_.transform.position;
+		Debug.Log ("Let go!");
 	}
 
     grabbed_ = null;
