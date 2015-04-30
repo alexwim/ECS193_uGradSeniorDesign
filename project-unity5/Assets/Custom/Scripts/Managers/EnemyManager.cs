@@ -25,6 +25,12 @@ public class EnemyManager : MonoBehaviour
 	}
 
 	private void Spawn (){
+		// If the player has no health left...
+		// if (playerHealth.currentHealth <= 0f){
+		//	... exit the function.
+		//return;
+		//}
+
 		int spawnPointIndex = Random.Range (0, spawnPoints.Length);
 		++enemiesSpawned;
 		++enemiesAlive;
