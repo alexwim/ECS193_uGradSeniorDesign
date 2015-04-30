@@ -36,7 +36,7 @@ public class Enemy : MonoBehaviour {
 
 		CAPSULE_COLLIDER_RADIUS = transform.GetComponent<CapsuleCollider>().radius;
 
-		Debug.Log ("AWAKE(range): " + range);
+		//Debug.Log ("AWAKE(range): " + range);
 	}
 	
 	private void Update() {
@@ -44,17 +44,17 @@ public class Enemy : MonoBehaviour {
 			navMeshAgent.enabled = false;
 			return;
 		} else if (IsSideways () && false) {
-			Debug.Log ("Sideways Detection: " + transform.position.y);
+			//Debug.Log ("Sideways Detection: " + transform.position.y);
 			RegainControl ();
 		} else if (navMeshAgent.enabled){
 			navMeshAgent.SetDestination (playerCollider.ClosestPointOnBounds(transform.position));
 
 			timer += Time.deltaTime;
 
-			Debug.Log ("Nav Mesh Enabled");
+			//Debug.Log ("Nav Mesh Enabled");
 
 			if(IsInRange ()) {
-				Debug.Log ("In Range");
+				//Debug.Log ("In Range");
 				if(timer >= rate) {
 					Attack ();
 					animator.Play("Attacking");
@@ -73,8 +73,9 @@ public class Enemy : MonoBehaviour {
 				Vector3 normal = contact.normal;
 				Vector3 relativeVelocity = collision.relativeVelocity;
 				
-				double damage = Mathf.Abs(Vector3.Dot (normal, relativeVelocity) * GetComponent<Rigidbody>().mass);
-				
+				float damage = Mathf.Abs(Vector3.Dot (normal, relativeVelocity) * GetComponent<Rigidbody>().mass);
+				//Debug.Log ("Damage taken: " + damage);
+
 				health -= (int) damage;
 				
 				droppedPosition.y = 0; // reset after drop
@@ -105,7 +106,7 @@ public class Enemy : MonoBehaviour {
 		Vector3 closestPosition = playerCollider.ClosestPointOnBounds (transform.position);
 
 		float currentDistance = Vector3.Distance (closestPosition, transform.position) - CAPSULE_COLLIDER_RADIUS;
-		Debug.Log ("Current Distance : " + currentDistance + "; range : " + range + "; bool : " + (range >= currentDistance));
+		//Debug.Log ("Current Distance : " + currentDistance + "; range : " + range + "; bool : " + (range >= currentDistance));
 		return (range >= currentDistance);
 	}
 

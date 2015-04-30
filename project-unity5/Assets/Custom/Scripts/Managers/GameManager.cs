@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
 public class GameManager : MonoBehaviour {
@@ -6,7 +7,7 @@ public class GameManager : MonoBehaviour {
 	public int enemiesPerWave = 1;
 	public float timeBetweenWaves = 3.0f;
 
-	public string countdownText;
+	public Text countdownText;
 
 	private int waveCurrent = 0;
 	private int enemiesSpawnedPreviously = 0;
@@ -22,6 +23,7 @@ public class GameManager : MonoBehaviour {
 
 	public void StartWave(int waveNumber) {
 		Debug.Log ("Starting wave " + waveNumber);
+		countdownText.text = "";
 		waveOngoing = true;
 		enemyManager.StartRepeatSpawn ();
 		timeSinceLastWave = 0;
@@ -33,6 +35,7 @@ public class GameManager : MonoBehaviour {
 	}
 
 	public void EndWave() {
+		countdownText.text = timeBetweenWaves.ToString ();
 		waveOngoing = false;
 		++waveCurrent;
 		enemiesSpawnedPreviously = enemyManager.enemiesSpawned;
@@ -47,6 +50,7 @@ public class GameManager : MonoBehaviour {
 			StartWave (waveCurrent);
 		} else if(gameIsStarted && !waveOngoing) {
 			timeSinceLastWave += Time.deltaTime;
+			countdownText.text = (Mathf.MoveTowards(timeBetweenWaves, timeBetweenWaves - timeSinceLastWave, timeBetweenWaves)).ToString ("F1");
 		}
 	}
 }
