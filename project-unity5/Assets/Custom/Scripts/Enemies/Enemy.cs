@@ -31,8 +31,8 @@ public class Enemy : MonoBehaviour {
 		playerHealth = player.GetComponent<PlayerHealth> ();
 		playerCollider = player.GetComponent<BoxCollider> ();
 		navMeshAgent = GetComponent<NavMeshAgent> ();
-		animator = GetComponent<Animator> ();
-		animator.speed = 0.5f;
+		//animator = GetComponent<Animator> ();
+		//animator.speed = 0.5f;
 
 		CAPSULE_COLLIDER_RADIUS = transform.GetComponent<CapsuleCollider>().radius;
 
@@ -43,10 +43,8 @@ public class Enemy : MonoBehaviour {
 		if (grabbed) {
 			navMeshAgent.enabled = false;
 			return;
-		} else if (IsSideways () && false) {
-			//Debug.Log ("Sideways Detection: " + transform.position.y);
-			RegainControl ();
-		} else if (navMeshAgent.enabled){
+		} 
+		else if (navMeshAgent.enabled){
 			navMeshAgent.SetDestination (playerCollider.ClosestPointOnBounds(transform.position));
 
 			timer += Time.deltaTime;
@@ -57,11 +55,10 @@ public class Enemy : MonoBehaviour {
 				//Debug.Log ("In Range");
 				if(timer >= rate) {
 					Attack ();
-					animator.Play("Attacking");
 				}
 			}
 			else {
-				animator.Play ("Walking");
+
 			}
 		}
 	}
@@ -74,7 +71,7 @@ public class Enemy : MonoBehaviour {
 				Vector3 relativeVelocity = collision.relativeVelocity;
 				
 				float damage = Mathf.Abs(Vector3.Dot (normal, relativeVelocity) * GetComponent<Rigidbody>().mass);
-				//Debug.Log ("Damage taken: " + damage);
+				Debug.Log ("Damage taken: " + damage);
 
 				health -= (int) damage;
 				
