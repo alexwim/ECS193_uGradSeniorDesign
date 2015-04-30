@@ -15,7 +15,6 @@ public class MagneticPinch : MonoBehaviour {
 
   public const float TRIGGER_DISTANCE_RATIO = 0.7f;
   
-  public string grabbableNames = ".*Enemy.*";
   public float forceSpringConstant = 100.0f;
   public float magnetDistance = 2.0f;
 
@@ -38,7 +37,7 @@ public class MagneticPinch : MonoBehaviour {
       Vector3 new_distance = pinch_position - close_things[j].transform.position;
       if (close_things[j].GetComponent<Rigidbody>() != null && new_distance.magnitude < distance.magnitude &&
           !close_things[j].transform.IsChildOf(transform) &&
-          Regex.IsMatch(close_things[j].name, grabbableNames + "\\(Clone\\)", RegexOptions.IgnoreCase)) {
+          Regex.IsMatch(close_things[j].name, "\\(Clone\\)", RegexOptions.IgnoreCase)) {
         grabbed_ = close_things[j];
         distance = new_distance;
 		grabbed_.GetComponent<Enemy>().grabbed = true;
