@@ -6,6 +6,8 @@ public class GameManager : MonoBehaviour {
 	public int enemiesPerWave = 1;
 	public float timeBetweenWaves = 3.0f;
 
+	public string countdownText;
+
 	private int waveCurrent = 0;
 	private int enemiesSpawnedPreviously = 0;
 	private bool waveOngoing = false;
