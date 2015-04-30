@@ -30,8 +30,6 @@ GameObject:
   - 135: {fileID: 13507462}
   - 195: {fileID: 19542820}
   - 114: {fileID: 11481886}
-  - 114: {fileID: 11438122}
-  - 114: {fileID: 11475804}
   m_Layer: 0
   m_Name: Zombunny
   m_TagString: Untagged
@@ -96,32 +94,6 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 0
   m_AllowConstantClipSamplingOptimization: 1
---- !u!114 &11438122
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 192808}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 311b5d3133e4d0644b666061d7326892, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rate: 1
-  damage: 5
-  range: .200000003
---- !u!114 &11475804
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 192808}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 28779146d256b424d814775f293ca7fa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  grabbed: 0
 --- !u!114 &11481886
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -138,7 +110,6 @@ MonoBehaviour:
   health: 100
   rate: 1
   damage: 5
-  range: 1
 --- !u!135 &13507462
 SphereCollider:
   m_ObjectHideFlags: 1

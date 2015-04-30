@@ -476,6 +476,7 @@ MonoBehaviour:
   enemyManager: {fileID: 506997246}
   enemiesPerWave: 1
   timeBetweenWaves: 3
+  countdownText: 
 --- !u!4 &547941963
 Transform:
   m_ObjectHideFlags: 0

@@ -16,7 +16,7 @@ public class Countdown : MonoBehaviour {
 		while (time > 0) {
 			yield return new WaitForSeconds(1);
 
-			text = "Next wave in: " + time.ToString();
+			text.text = "Next wave in: " + time.ToString();
 
 			time -= 1;
 		}

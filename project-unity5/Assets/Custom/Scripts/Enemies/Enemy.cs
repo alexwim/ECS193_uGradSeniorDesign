@@ -59,9 +59,6 @@ public class Enemy : MonoBehaviour {
 					Attack ();
 					animator.Play("Attacking");
 				}
-			//	else {
-			//		animator.Play ("Idle");
-			//	}
 			}
 			else {
 				animator.Play ("Walking");
@@ -76,7 +73,7 @@ public class Enemy : MonoBehaviour {
 				Vector3 normal = contact.normal;
 				Vector3 relativeVelocity = collision.relativeVelocity;
 				
-				double damage = Vector3.Dot (normal, relativeVelocity) * GetComponent<Rigidbody>().mass;
+				double damage = Mathf.Abs(Vector3.Dot (normal, relativeVelocity) * GetComponent<Rigidbody>().mass);
 				
 				health -= (int) damage;
 				
