@@ -43,8 +43,10 @@ public class MagneticPinch : MonoBehaviour {
 				Debug.Log ("Grabbed");
 				grabbed_ = c;
 				distance = new_distance;
-				grabbed_.GetComponent<EnemyMovement>().Pinch();
 			}
+		}
+		if (grabbed_ != null) {
+			grabbed_.GetComponent<EnemyMovement> ().Pinch ();
 		}
   	}
 
