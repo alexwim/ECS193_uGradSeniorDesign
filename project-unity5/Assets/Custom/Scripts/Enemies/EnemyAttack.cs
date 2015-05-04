@@ -2,37 +2,40 @@
 using System.Collections;
 
 public class EnemyAttack : MonoBehaviour {
-	public float rate = 1f;
+	public float rate = 1.0f;
 	public int damage = 5;
-	public float range = 0.2f;
-
-	private GameObject player;
+	
 	private PlayerHealth playerHealth;
-	private Collider playerCollider;
 	private float timer;
+	private bool playerInRange = false;
 
 	private void Awake() {
-		player = GameObject.FindGameObjectWithTag ("Player");
+		GameObject player = GameObject.FindGameObjectWithTag ("Player");
 		playerHealth = player.GetComponent<PlayerHealth> ();
-		playerCollider = player.GetComponent<Collider> ();
 	}
 
-	private bool IsInRange() {
-		float currentDistance = Vector3.Distance (playerCollider.ClosestPointOnBounds (transform.position), transform.position) - transform.GetComponent<CapsuleCollider> ().radius;
-		return range > currentDistance;
+	private void OnTriggerEnter(Collider other) {
+		if (other.gameObject.CompareTag ("Player")) {
+			playerInRange = true;
+		}
+	}
+
+	private void OnTriggerExit(Collider other) {
+		if(other.gameObject.CompareTag("Player")) {
+			playerInRange = false;
+		}
 	}
 
 	private void Update() {
 		timer += Time.deltaTime;
 
-		if(timer >= rate && IsInRange()) {
+		if(timer >= rate && playerInRange) {
 			Attack();
 		}
 	}
 
 	private void Attack() {
 		timer = 0f;
-
 		playerHealth.TakeDamage (damage);
 	}
 }

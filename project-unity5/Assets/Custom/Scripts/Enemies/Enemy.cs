@@ -25,6 +25,8 @@ public class Enemy : MonoBehaviour {
 	public float rate = 1f;
 	public int damage = 5;
 
+	private bool inRange;
+
 	private void Awake() {
 		player = GameObject.FindGameObjectWithTag ("Player");
 		playerTransform = player.transform;
@@ -63,6 +65,19 @@ public class Enemy : MonoBehaviour {
 			}
 		}
 	}
+
+	private void OnTriggerEnter(Collider other) {
+		if (other.gameObject.tag == "Player") {
+			inRange = true;
+		}
+	}
+
+	private void OnTriggerExit(Collider other) {
+		if (other.gameObject.tag == "Player") {
+			inRange = false;
+		}
+	}
+
 
 	private void OnCollisionEnter (Collision collision) {
 		if ((!grabbed) && (!navMeshAgent.enabled) && (TERRAIN_NAME == collision.gameObject.name)) {

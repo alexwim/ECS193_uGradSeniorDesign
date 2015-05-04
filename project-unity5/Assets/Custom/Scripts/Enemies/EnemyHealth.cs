@@ -3,20 +3,14 @@ using System.Collections;
 
 public class EnemyHealth : MonoBehaviour {
 	public int health = 100;
-	public Vector3 droppedPosition;
 
-	private void OnCollisionEnter (Collision collision) {
-		if (droppedPosition.y > 0) {
-			Debug.Log ("I FELL");
-			ContactPoint contact = collision.contacts[0];
-			Vector3 normal = contact.normal;
-			Vector3 relativeVelocity = collision.relativeVelocity;
+	public void TakeDamage(int damage) {
+		health -= damage;
 
-			float damage = Vector3.Dot (normal, relativeVelocity);
+		Debug.Log ("damage: " + damage + "; health=" + health);
 
-			Debug.Log(damage);
-			droppedPosition.y = 0; // reset after drop
-			death ();
+		if (health <= 0) {
+			death();
 		}
 	}
 

@@ -2,41 +2,58 @@
 using System.Collections;
 
 public class EnemyMovement : MonoBehaviour {
-  private Transform player;
-  private BoxCollider playerCollider;
-  private NavMeshAgent navMeshAgent;
+  	private Collider playerCollider;
+  	private NavMeshAgent navMeshAgent;
+	private EnemyHealth enemyHealth;
+	private Rigidbody rigidBody;
+  	private bool grabbed;
+	private Vector3 droppedPosition;
 
-  [HideInInspector]
-  public bool grabbed;
+  	private void Awake () {
+    	grabbed = false;
+    	playerCollider = GameObject.FindGameObjectWithTag ("Player").transform.GetComponent<Collider>();
+    	navMeshAgent = GetComponent<NavMeshAgent> ();
+		enemyHealth = GetComponent<EnemyHealth> ();
+		rigidBody = GetComponent<Rigidbody> ();
+  	}
 
-  private void Awake () {
-    grabbed = false;
-    player = GameObject.FindGameObjectWithTag ("Player").transform;
-    playerCollider = player.GetComponent<BoxCollider> ();
-    navMeshAgent = GetComponent<NavMeshAgent> ();
-  }
+	public void Pinch() {
+		grabbed = true;
+		navMeshAgent.enabled = false;
+		rigidBody.isKinematic = false;
+		rigidBody.useGravity = true;
+	}
 
-  private void RegainControl () {
-    GetComponent<Rigidbody>().isKinematic = true;
-    GetComponent<Rigidbody>().useGravity = false;
-    navMeshAgent.enabled = true;
-  }
+	public void Release() {
+		grabbed = false;
+		droppedPosition = transform.position;
+	}
+
+  	private void RegainControl () {
+  	  	GetComponent<Rigidbody>().isKinematic = true;
+    	GetComponent<Rigidbody>().useGravity = false;
+    	navMeshAgent.enabled = true;
+  	}
 
 	private void OnCollisionEnter (Collision collision) {
-		// This re-enables the navmesh once an enemy hits the ground after a long toss.
 		if (!grabbed && !navMeshAgent.enabled && collision.gameObject.name == "Terrain") {
+			ContactPoint contact = collision.contacts[0];
+			Vector3 normal = contact.normal;
+			Vector3 relativeVelocity = collision.relativeVelocity;
+			
+			int damage = (int) Mathf.Abs(Vector3.Dot (normal, relativeVelocity) * GetComponent<Rigidbody>().mass);
+			
+			enemyHealth.TakeDamage (damage);
+			
+			droppedPosition.y = 0; // reset after drop
+
 			RegainControl ();
 		}
 	}
 
-  private void Update () {
-    if (grabbed) {
-      navMeshAgent.enabled = false;
-      return;
-    } else if (transform.position.y < 0.9f) { // In case the enemies can't collide against the terrain, ie they're laying the ground.
-      RegainControl ();
-    } else if (navMeshAgent.enabled) {
-      navMeshAgent.SetDestination (playerCollider.ClosestPointOnBounds(transform.position));
-    }
-  }
+  	private void Update () {
+    	if (navMeshAgent.enabled) {
+      		navMeshAgent.SetDestination (playerCollider.ClosestPointOnBounds(transform.position));
+    	}
+  	}
 }

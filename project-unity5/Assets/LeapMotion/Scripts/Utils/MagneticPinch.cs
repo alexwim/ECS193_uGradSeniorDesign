@@ -12,102 +12,98 @@ using Leap;
 // Leap Motion hand script that detects pinches and grabs the
 // closest rigidbody with a spring force if it's within a given range.
 public class MagneticPinch : MonoBehaviour {
-
-  public const float TRIGGER_DISTANCE_RATIO = 0.7f;
+	public const float TRIGGER_DISTANCE_RATIO = 0.7f;
   
-  public float forceSpringConstant = 100.0f;
-  public float magnetDistance = 2.0f;
+  	public float forceSpringConstant = 50.0f;
+  	public float magnetDistance = 2.0f;
 
-  protected bool pinching_;
-  protected Collider grabbed_;
+  	protected bool pinching_;
+  	protected Collider grabbed_;
 
-  void Start() {
-    pinching_ = false;
-    grabbed_ = null;
-  }
+  	void Start() {
+    	pinching_ = false;
+    	grabbed_ = null;
+  	}
 
-  void OnPinch(Vector3 pinch_position) {
-    pinching_ = true;
+  	void OnPinch(Vector3 pinch_position) {
+    	pinching_ = true;
 
-    // Check if we pinched a movable object and grab the closest one that's not part of the hand.
-    Collider[] close_things = Physics.OverlapSphere(pinch_position, magnetDistance);
-    Vector3 distance = new Vector3(magnetDistance, 0.0f, 0.0f);
+    	// Check if we pinched a movable object and grab the closest one that's not part of the hand.
+    	Collider[] close_things = Physics.OverlapSphere(pinch_position, magnetDistance);
+    	Vector3 distance = new Vector3(magnetDistance, 0.0f, 0.0f);
 
-    for (int j = 0; j < close_things.Length; ++j) {
-      Vector3 new_distance = pinch_position - close_things[j].transform.position;
-      if (close_things[j].GetComponent<Rigidbody>() != null && new_distance.magnitude < distance.magnitude &&
-          !close_things[j].transform.IsChildOf(transform) &&
-          close_things[j].CompareTag("Enemy")) {
-		Debug.Log ("Grabbed!");
-        grabbed_ = close_things[j];
-        distance = new_distance;
-		grabbed_.GetComponent<Enemy>().grabbed = true;
-        grabbed_.GetComponent<Rigidbody>().isKinematic = false;
-        grabbed_.GetComponent<Rigidbody>().useGravity = true;
-        break;
-      }
-    }
-  }
+		foreach (Collider c in close_things) {
+			Vector3 new_distance = pinch_position - c.transform.position;
+
+			Rigidbody rigidbody = c.GetComponent<Rigidbody>();
+			float diff = distance.magnitude - new_distance.magnitude;
+			bool hasEnemyTag = c.CompareTag("Enemy");
+
+			if( (rigidbody!=null) && (diff > 0) && (hasEnemyTag) ) {
+				Debug.Log ("Grabbed");
+				grabbed_ = c;
+				distance = new_distance;
+				grabbed_.GetComponent<EnemyMovement>().Pinch();
+			}
+		}
+  	}
 
 	void OnDestroy() {
+		Release ();
+	}
+
+  	void OnRelease() {
+		Release ();
+  	}
+	
+	void Release() {
 		if (grabbed_ != null) {
-			grabbed_.GetComponent<Enemy>().grabbed = false;
-			grabbed_.GetComponent<Enemy>().droppedPosition = grabbed_.transform.position;
+			grabbed_.GetComponent<EnemyMovement>().Release ();
 			Debug.Log ("Let go!");
 		}
-
+		
 		grabbed_ = null;
 		pinching_ = false;
 	}
 
-  void OnRelease() {
-	if (grabbed_ != null) {
-		grabbed_.GetComponent<Enemy>().grabbed = false;
-		grabbed_.GetComponent<Enemy>().droppedPosition = grabbed_.transform.position;
-		Debug.Log ("Let go!");
-	}
+  	void Update() {
+    	bool trigger_pinch = false;
+    	HandModel hand_model = GetComponent<HandModel>();
+    	Hand leap_hand = hand_model.GetLeapHand();
 
-    grabbed_ = null;
-    pinching_ = false;
-  }
+    	if (leap_hand == null)
+      		return;
 
-  void Update() {
-    bool trigger_pinch = false;
-    HandModel hand_model = GetComponent<HandModel>();
-    Hand leap_hand = hand_model.GetLeapHand();
+    	// Scale trigger distance by thumb proximal bone length.
+    	Vector leap_thumb_tip = leap_hand.Fingers[0].TipPosition;
+    	float proximal_length = leap_hand.Fingers[0].Bone(Bone.BoneType.TYPE_PROXIMAL).Length;
+    	float trigger_distance = proximal_length * TRIGGER_DISTANCE_RATIO;
 
-    if (leap_hand == null)
-      return;
+    	// Check thumb tip distance to joints on all other fingers.
+    	// If it's close enough, start pinching.
+    	for (int i = 1; i < HandModel.NUM_FINGERS && !trigger_pinch; ++i) {
+      		Finger finger = leap_hand.Fingers[i];
 
-    // Scale trigger distance by thumb proximal bone length.
-    Vector leap_thumb_tip = leap_hand.Fingers[0].TipPosition;
-    float proximal_length = leap_hand.Fingers[0].Bone(Bone.BoneType.TYPE_PROXIMAL).Length;
-    float trigger_distance = proximal_length * TRIGGER_DISTANCE_RATIO;
+      		for (int j = 0; j < FingerModel.NUM_BONES && !trigger_pinch; ++j) {
+        		Vector leap_joint_position = finger.Bone((Bone.BoneType)j).NextJoint;
+        		
+				if (leap_joint_position.DistanceTo(leap_thumb_tip) < trigger_distance)
+          			trigger_pinch = true;
+      			}
+    		}
 
-    // Check thumb tip distance to joints on all other fingers.
-    // If it's close enough, start pinching.
-    for (int i = 1; i < HandModel.NUM_FINGERS && !trigger_pinch; ++i) {
-      Finger finger = leap_hand.Fingers[i];
+    		Vector3 pinch_position = hand_model.fingers[0].GetTipPosition();
 
-      for (int j = 0; j < FingerModel.NUM_BONES && !trigger_pinch; ++j) {
-        Vector leap_joint_position = finger.Bone((Bone.BoneType)j).NextJoint;
-        if (leap_joint_position.DistanceTo(leap_thumb_tip) < trigger_distance)
-          trigger_pinch = true;
-      }
-    }
-
-    Vector3 pinch_position = hand_model.fingers[0].GetTipPosition();
-
-    // Only change state if it's different.
-    if (trigger_pinch && !pinching_)
-      OnPinch(pinch_position);
-    else if (!trigger_pinch && pinching_)
-      OnRelease();
-
-    // Accelerate what we are grabbing toward the pinch.
-    if (grabbed_ != null) {
-      Vector3 distance = pinch_position - grabbed_.transform.position;
-      grabbed_.GetComponent<Rigidbody>().AddForce(forceSpringConstant * distance);
-    }
-  }
+    		// Only change state if it's different.
+    		if (trigger_pinch && !pinching_)
+      			OnPinch(pinch_position);
+    		else if (!trigger_pinch && pinching_)
+      			OnRelease();
+    
+			// Accelerate what we are grabbing toward the pinch.
+    		if (grabbed_ != null) {
+      			Vector3 distance = pinch_position - grabbed_.transform.position;
+      			grabbed_.GetComponent<Rigidbody>().AddForce(forceSpringConstant * distance);
+    		}
+  	}
 }

@@ -13,7 +13,10 @@ GameObject:
   - 23: {fileID: 2333564}
   - 195: {fileID: 19533564}
   - 54: {fileID: 5433564}
-  - 114: {fileID: 11427432}
+  - 135: {fileID: 13500356}
+  - 114: {fileID: 11428782}
+  - 114: {fileID: 11447808}
+  - 114: {fileID: 11435500}
   m_Layer: 0
   m_Name: BasicEnemy
   m_TagString: Enemy
@@ -28,7 +31,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 133564}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: 0}
+  m_LocalPosition: {x: 7.01000023, y: 1.16999996, z: -5.1500001}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -79,7 +82,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 2
---- !u!114 &11427432
+--- !u!114 &11428782
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -87,14 +90,48 @@ MonoBehaviour:
   m_GameObject: {fileID: 133564}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 05f8da6becc42a547b650f8d782e7b2f, type: 3}
+  m_Script: {fileID: 11500000, guid: 28779146d256b424d814775f293ca7fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  droppedPosition: {x: 0, y: 0, z: 0}
   grabbed: 0
+  droppedPosition: {x: 0, y: 0, z: 0}
+--- !u!114 &11435500
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 133564}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4399e69c05d0ad41a404b374345f997, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
   health: 100
+--- !u!114 &11447808
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 133564}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 311b5d3133e4d0644b666061d7326892, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
   rate: 1
-  damage: 1
+  damage: 5
+--- !u!135 &13500356
+SphereCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 133564}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 1.20000005
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!136 &13633564
 CapsuleCollider:
   m_ObjectHideFlags: 1
