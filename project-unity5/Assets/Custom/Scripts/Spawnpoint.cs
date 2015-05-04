@@ -17,7 +17,7 @@ public class Spawnpoint : MonoBehaviour {
 	}
 
 	public void Spawn (int deltaHealth, int deltaDamage) {
-		GameObject newenemy = Instantiate (enemy, GetPosition(), transform.rotation) as GameObject;
+		GameObject newenemy = Instantiate (enemy, GetPosition(), GetRotation()) as GameObject;
 		newenemy.transform.parent = gameObject.transform.parent;
 		newenemy.GetComponent<EnemyHealth> ().health += deltaHealth;
 		newenemy.GetComponent<EnemyAttack> ().damage += deltaDamage;
@@ -33,5 +33,9 @@ public class Spawnpoint : MonoBehaviour {
 		} else {
 			return transform.position;
 		}
+	}
+
+	private Quaternion GetRotation() {
+		return Quaternion.FromToRotation (transform.position, new Vector3 (0, 0, 0));
 	}
 }
