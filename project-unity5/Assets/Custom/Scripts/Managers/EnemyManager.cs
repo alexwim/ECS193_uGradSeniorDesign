@@ -42,7 +42,7 @@ public class EnemyManager : MonoBehaviour
 
 		GameObject newenemy = Instantiate (enemy, spawnPoints [spawnPointIndex].position, spawnPoints [spawnPointIndex].rotation) as GameObject;
 		newenemy.transform.parent = gameObject.transform;
-		newenemy.GetComponent<Enemy> ().health += deltaHealth;
-		newenemy.GetComponent<Enemy> ().damage += deltaDamage;
+		newenemy.GetComponent<EnemyHealth> ().health += deltaHealth;
+		newenemy.GetComponent<EnemyAttack> ().damage += deltaDamage;
 	}
 }

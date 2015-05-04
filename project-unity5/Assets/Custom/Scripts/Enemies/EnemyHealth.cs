@@ -15,6 +15,7 @@ public class EnemyHealth : MonoBehaviour {
 	}
 
 	private void death() {
+		gameObject.GetComponentInParent<EnemyManager>().enemiesAlive -= 1;
 		Destroy (gameObject);
 	}
 }
