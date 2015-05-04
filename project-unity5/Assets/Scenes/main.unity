@@ -284,6 +284,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1595ab1dcbaeb6c40a711b2f57e7b90e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isCircularArea: 0
+  CircularRadius: 0
+  isRectangularArea: 0
+  RectangularXDist: 0
+  RectangularZDist: 0
 --- !u!1 &164722585
 GameObject:
   m_ObjectHideFlags: 0
@@ -545,6 +550,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1595ab1dcbaeb6c40a711b2f57e7b90e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isCircularArea: 0
+  CircularRadius: 0
+  isRectangularArea: 0
+  RectangularXDist: 0
+  RectangularZDist: 0
 --- !u!1 &881381023
 GameObject:
   m_ObjectHideFlags: 0
@@ -1014,6 +1024,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1595ab1dcbaeb6c40a711b2f57e7b90e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isCircularArea: 0
+  CircularRadius: 0
+  isRectangularArea: 0
+  RectangularXDist: 0
+  RectangularZDist: 0
 --- !u!1 &1584045444
 GameObject:
   m_ObjectHideFlags: 0
