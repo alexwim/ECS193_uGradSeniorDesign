@@ -76,15 +76,15 @@ NavMeshSettings:
   m_ObjectHideFlags: 0
   m_BuildSettings:
     serializedVersion: 2
-    agentRadius: .800000012
-    agentHeight: 1.5
+    agentRadius: .5
+    agentHeight: 2
     agentSlope: 35
     agentClimb: .400000006
     ledgeDropHeight: 20
     maxJumpAcrossDistance: 0
     accuratePlacement: 0
     minRegionArea: 2
-    cellSize: .266666681
+    cellSize: .166666672
     manualCellSize: 0
   m_NavMeshData: {fileID: 23800000, guid: 7f67bbb42c3867f41b54cd45ffa19d77, type: 2}
 --- !u!1 &67862777
@@ -253,6 +253,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 151292368}
+  - 114: {fileID: 151292369}
   m_Layer: 0
   m_Name: SpawnPoint_Right
   m_TagString: Untagged
@@ -272,6 +273,17 @@ Transform:
   m_Children: []
   m_Father: {fileID: 506997245}
   m_RootOrder: 2
+--- !u!114 &151292369
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 151292367}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1595ab1dcbaeb6c40a711b2f57e7b90e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &164722585
 GameObject:
   m_ObjectHideFlags: 0
@@ -502,6 +514,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 702395475}
+  - 114: {fileID: 702395476}
   m_Layer: 0
   m_Name: SpawnPoint_Left
   m_TagString: Untagged
@@ -521,6 +534,17 @@ Transform:
   m_Children: []
   m_Father: {fileID: 506997245}
   m_RootOrder: 0
+--- !u!114 &702395476
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 702395474}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1595ab1dcbaeb6c40a711b2f57e7b90e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &881381023
 GameObject:
   m_ObjectHideFlags: 0
@@ -959,6 +983,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 1525024302}
+  - 114: {fileID: 1525024303}
   m_Layer: 0
   m_Name: SpawnPoint_Front
   m_TagString: Untagged
@@ -978,6 +1003,17 @@ Transform:
   m_Children: []
   m_Father: {fileID: 506997245}
   m_RootOrder: 1
+--- !u!114 &1525024303
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1525024301}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1595ab1dcbaeb6c40a711b2f57e7b90e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1584045444
 GameObject:
   m_ObjectHideFlags: 0
