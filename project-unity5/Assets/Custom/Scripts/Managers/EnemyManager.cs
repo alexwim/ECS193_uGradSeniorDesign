@@ -14,6 +14,11 @@ public class EnemyManager : MonoBehaviour
 	[HideInInspector]
 	public bool isSpawning = false;
 
+	[HideInInspector]
+	public int deltaHealth = 0;
+	[HideInInspector]
+	public int deltaDamage = 0;
+
 	public void StartRepeatSpawn (){
 		isSpawning = true;
 		InvokeRepeating ("Spawn", spawnTime, spawnTime);
@@ -37,5 +42,7 @@ public class EnemyManager : MonoBehaviour
 
 		GameObject newenemy = Instantiate (enemy, spawnPoints [spawnPointIndex].position, spawnPoints [spawnPointIndex].rotation) as GameObject;
 		newenemy.transform.parent = gameObject.transform;
+		newenemy.GetComponent<Enemy> ().health += deltaHealth;
+		newenemy.GetComponent<Enemy> ().damage += deltaDamage;
 	}
 }

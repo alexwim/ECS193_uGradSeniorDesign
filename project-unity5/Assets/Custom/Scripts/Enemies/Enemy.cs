@@ -12,7 +12,7 @@ public class Enemy : MonoBehaviour {
 	private BoxCollider playerCollider;
 	private NavMeshAgent navMeshAgent;
 
-	private Animator animator;
+	//private Animator animator;
 
 	[HideInInspector]
 	public Vector3 droppedPosition;
@@ -33,8 +33,8 @@ public class Enemy : MonoBehaviour {
 		playerHealth = player.GetComponent<PlayerHealth> ();
 		playerCollider = player.GetComponent<BoxCollider> ();
 		navMeshAgent = GetComponent<NavMeshAgent> ();
-		animator = GetComponent<Animator> ();
-		animator.speed = 0.5f;
+		//animator = GetComponent<Animator> ();
+		//animator.speed = 0.5f;
 
 		CAPSULE_COLLIDER_RADIUS = transform.GetComponent<CapsuleCollider>().radius;
 
@@ -44,7 +44,7 @@ public class Enemy : MonoBehaviour {
 	private void Update() {
 		if (grabbed) {
 			navMeshAgent.enabled = false;
-			animator.Play("Idle");
+			//animator.Play("Idle");
 			return;
 		} 
 		else if (navMeshAgent.enabled){
@@ -59,9 +59,6 @@ public class Enemy : MonoBehaviour {
 				if(timer >= rate) {
 					Attack ();
 				}
-			}
-			else {
-
 			}
 		}
 	}
@@ -113,7 +110,7 @@ public class Enemy : MonoBehaviour {
 		GetComponent<Rigidbody>().isKinematic = true;
 		GetComponent<Rigidbody>().useGravity = false;
 		navMeshAgent.enabled = true;
-		animator.Play ("Move");
+		//animator.Play ("Move");
 	}
 
 	private bool IsInRange() {

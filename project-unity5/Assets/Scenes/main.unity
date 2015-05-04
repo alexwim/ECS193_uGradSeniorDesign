@@ -446,6 +446,8 @@ MonoBehaviour:
   enemiesSpawned: 0
   enemiesAlive: 0
   isSpawning: 0
+  deltaHealth: 0
+  deltaDamage: 0
 --- !u!1 &547941961
 GameObject:
   m_ObjectHideFlags: 0

@@ -9,6 +9,9 @@ public class GameManager : MonoBehaviour {
 
 	public Text countdownText;
 
+	public int perWaveDeltaHealth = 0;
+	public int perWaveDeltaDamage = 0;
+
 	private int waveCurrent = 0;
 	private int enemiesSpawnedPreviously = 0;
 	private bool waveOngoing = false;
@@ -25,6 +28,8 @@ public class GameManager : MonoBehaviour {
 		Debug.Log ("Starting wave " + waveNumber);
 		countdownText.text = "";
 		waveOngoing = true;
+		enemyManager.deltaHealth = waveNumber * perWaveDeltaHealth;
+		enemyManager.deltaDamage = waveNumber * perWaveDeltaDamage;
 		enemyManager.StartRepeatSpawn ();
 		timeSinceLastWave = 0;
 	}
