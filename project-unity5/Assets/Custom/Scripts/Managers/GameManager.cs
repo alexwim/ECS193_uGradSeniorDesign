@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour {
 
 	public int perWaveDeltaHealth = 0;
 	public int perWaveDeltaDamage = 0;
+	public int perWaveDeltaEnemyCount = 0;
 
 	private int waveCurrent = 0;
 	private int enemiesSpawnedPreviously = 0;
@@ -28,8 +29,8 @@ public class GameManager : MonoBehaviour {
 		Debug.Log ("Starting wave " + waveNumber);
 		countdownText.text = "";
 		waveOngoing = true;
-		enemyManager.deltaHealth = waveNumber * perWaveDeltaHealth;
-		enemyManager.deltaDamage = waveNumber * perWaveDeltaDamage;
+		enemyManager.deltaHealth = CurrentBonusHealth();
+		enemyManager.deltaDamage = CurrentBonusDamage();
 		enemyManager.StartRepeatSpawn ();
 		timeSinceLastWave = 0;
 	}
@@ -47,7 +48,7 @@ public class GameManager : MonoBehaviour {
 	}
 
 	public void Update() {
-		if (((enemyManager.enemiesSpawned - enemiesSpawnedPreviously) >= enemiesPerWave) && enemyManager.isSpawning) {
+		if (((enemyManager.enemiesSpawned - enemiesSpawnedPreviously) >= CurrentWaveEnemyCount()) && enemyManager.isSpawning) {
 			StopWave ();
 		} else if (!enemyManager.isSpawning && enemyManager.enemiesAlive == 0 && waveOngoing) {
 			EndWave ();
@@ -57,6 +58,18 @@ public class GameManager : MonoBehaviour {
 			timeSinceLastWave += Time.deltaTime;
 			countdownText.text = (Mathf.MoveTowards(timeBetweenWaves, timeBetweenWaves - timeSinceLastWave, timeBetweenWaves)).ToString ("F1");
 		}
+	}
+
+	private int CurrentBonusHealth(){
+		return waveCurrent * perWaveDeltaHealth;
+	}
+
+	private int CurrentBonusDamage(){
+		return waveCurrent * perWaveDeltaDamage;
+	}
+
+	private int CurrentWaveEnemyCount(){
+		return waveCurrent * perWaveDeltaEnemyCount + enemiesPerWave;
 	}
 }
 

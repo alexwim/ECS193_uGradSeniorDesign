@@ -481,6 +481,7 @@ MonoBehaviour:
   countdownText: {fileID: 1294008828}
   perWaveDeltaHealth: 0
   perWaveDeltaDamage: 0
+  perWaveDeltaEnemyCount: 1
 --- !u!4 &547941963
 Transform:
   m_ObjectHideFlags: 0
