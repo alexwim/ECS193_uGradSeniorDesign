@@ -26,12 +26,8 @@ public class HUDManager : MonoBehaviour {
 		}
 	}
 
-	public void ReduceHealth(int amount, int health, int maxHealth) {
-		healthBar.fillAmount = Mathf.MoveTowards(health, health-amount, health)/maxHealth;
-	}
-
-	public void IncreaseHealth(int amount, int health, int maxHealth) {
-		healthBar.fillAmount = Mathf.MoveTowards(health, health+amount, maxHealth-health)/maxHealth;
+	public void SetHealthTo(int amount, int maxHealth) {
+		healthBar.fillAmount = ((float) amount) / ((float) maxHealth);
 	}
 
 	public void StartCountdown(float startTime) {

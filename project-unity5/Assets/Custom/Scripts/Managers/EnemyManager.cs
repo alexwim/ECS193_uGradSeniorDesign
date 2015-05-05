@@ -19,6 +19,10 @@ public class EnemyManager : MonoBehaviour
 	[HideInInspector]
 	public int deltaDamage = 0;
 
+	public void Reset() {
+		enemiesSpawned = 0;
+	}
+
 	public void StartRepeatSpawn (){
 		isSpawning = true;
 		InvokeRepeating ("Spawn", spawnTime, spawnTime);
@@ -27,6 +31,14 @@ public class EnemyManager : MonoBehaviour
 	public void StopRepeatSpawn (){
 		isSpawning = false;
 		CancelInvoke ("Spawn");
+	}
+
+	public void ClearAllEnemies (){
+		foreach (Transform child in transform) {
+			if( child.CompareTag("Enemy") ) {
+				child.GetComponent<EnemyHealth> ().TakeDamage(int.MaxValue);
+			}
+		}
 	}
 
 	private void Spawn (){

@@ -19,18 +19,45 @@ public class GameManager : MonoBehaviour {
 	private bool waitingForTimer = false;
 
 	private HUDManager hud;
-	private GameObject mainMenu;
+	public GameObject mainMenu;
+	public GameObject gameOverMenu;
+	public PlayerHealth player;
 
 	void Start() {
 		hud = GameObject.Find ("/LeapOVRPlayerController/OVRCameraRig/CenterEyeAnchor/HUD").GetComponent<HUDManager> ();
-		mainMenu = GameObject.Find ("MainMenu");
+		player = GameObject.Find ("/Environment/Castle").GetComponent<PlayerHealth> ();
 		mainMenu.SetActive (true);
 	}
 
 	public void StartGame() {
 		gameIsStarted = true;
-		StartWave (waveCurrent);
+		player.Reset ();
+		enemyManager.Reset ();
 		mainMenu.SetActive (false);
+
+		waveCurrent = 0;
+		enemiesSpawnedPreviously = 0;
+		waveOngoing = false;
+		waitingForTimer = false;
+
+		// This must be the last thing we do
+		StartWave (waveCurrent);
+	}
+
+	public void Restart() {
+		gameOverMenu.SetActive (false);
+		mainMenu.SetActive (true);
+		mainMenu.GetComponentInChildren<StartButton> ().Reset ();
+	}
+
+	public void EndGame() {
+		StopWave ();
+		EndWave ();
+		enemyManager.ClearAllEnemies ();
+
+		gameOverMenu.SetActive (true);
+		gameOverMenu.GetComponentInChildren<ReturnButton> ().Reset ();
+		gameIsStarted = false;
 	}
 
 	public void StartWave(int waveNumber) {
@@ -63,6 +90,10 @@ public class GameManager : MonoBehaviour {
 		} else if(gameIsStarted && !waveOngoing && !hud.IsTimerRunning()) {
 			hud.StartCountdown(timeBetweenWaves);
 			waitingForTimer = true;
+		}
+
+		if (gameIsStarted && player.IsDead ()) {
+			EndGame ();
 		}
 
 		// Day Night Cycle

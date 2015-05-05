@@ -12,14 +12,19 @@ public class PlayerHealth : MonoBehaviour {
 
 	void Start() {
 		hud = GameObject.Find ("/LeapOVRPlayerController/OVRCameraRig/CenterEyeAnchor/HUD").GetComponent<HUDManager> ();
+		Reset ();
+	}
+
+	public void Reset() {
+		hud.SetHealthTo (maxHealth, maxHealth);
 		health = maxHealth;
 		isDead = false;
 	}
 
 	public void TakeDamage(int amount) {
 		if (!isDead) {
-			hud.ReduceHealth(amount, health, maxHealth);
-			health -= amount;
+			health = (int) Mathf.MoveTowards(health, health - amount, health);
+			hud.SetHealthTo(health, maxHealth);
 
 			if(health <= 0) {
 				Death();
@@ -29,12 +34,16 @@ public class PlayerHealth : MonoBehaviour {
 
 	public void HealDamage(int amount) {
 		if (!isDead) {
-			hud.IncreaseHealth(amount, health, maxHealth);
 			health = (int) Mathf.MoveTowards(health, health + amount, maxHealth - health);
+			hud.SetHealthTo(health, maxHealth);
 		}
 	}
 
 	private void Death() {
 		isDead = true;
+	}
+
+	public bool IsDead() {
+		return isDead;
 	}
 }
