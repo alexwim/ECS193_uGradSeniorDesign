@@ -738,7 +738,7 @@ GameObject:
   - 114: {fileID: 1113856876}
   - 225: {fileID: 1113856875}
   m_Layer: 0
-  m_Name: StartMenu
+  m_Name: MainMenu
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
