@@ -17,13 +17,15 @@ public class Spawnpoint : MonoBehaviour {
 	}
 
 	public void Spawn (int deltaHealth, int deltaDamage) {
-		GameObject newenemy = Instantiate (enemy, GetPosition(), GetRotation()) as GameObject;
+		Vector3 spawnPos = GetSpawnLocation ();
+
+		GameObject newenemy = Instantiate (enemy, spawnPos, GetRotationFrom(spawnPos)) as GameObject;
 		newenemy.transform.parent = gameObject.transform.parent;
 		newenemy.GetComponent<EnemyHealth> ().health += deltaHealth;
 		newenemy.GetComponent<EnemyAttack> ().damage += deltaDamage;
 	}
 
-	private Vector3 GetPosition() {
+	private Vector3 GetSpawnLocation() {
 		if (isCircularArea) {
 			float r = Random.Range (0.0f, CircularRadius);
 			float theta = Random.Range (0.0f, 360.0f);
@@ -35,7 +37,7 @@ public class Spawnpoint : MonoBehaviour {
 		}
 	}
 
-	private Quaternion GetRotation() {
-		return Quaternion.FromToRotation (transform.position, new Vector3 (0, 0, 0));
+	private Quaternion GetRotationFrom(Vector3 fromPos) {
+		return Quaternion.FromToRotation (fromPos, new Vector3 (0, 0, 0));
 	}
 }
