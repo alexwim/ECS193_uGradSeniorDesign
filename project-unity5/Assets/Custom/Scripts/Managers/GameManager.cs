@@ -7,8 +7,6 @@ public class GameManager : MonoBehaviour {
 	public int enemiesPerWave = 1;
 	public float timeBetweenWaves = 3.0f;
 
-	public Text countdownText;
-
 	public int perWaveDeltaHealth = 0;
 	public int perWaveDeltaDamage = 0;
 	public int perWaveDeltaEnemyCount = 0;
@@ -16,9 +14,15 @@ public class GameManager : MonoBehaviour {
 	private int waveCurrent = 0;
 	private int enemiesSpawnedPreviously = 0;
 	private bool waveOngoing = false;
-	private float timeSinceLastWave;
 
 	private bool gameIsStarted = false;
+	private bool waitingForTimer = false;
+
+	private HUDManager hud;
+
+	void Start() {
+		hud = GameObject.Find ("/LeapOVRPlayerController/OVRCameraRig/CenterEyeAnchor/HUD").GetComponent<HUDManager> ();
+	}
 
 	public void StartGame() {
 		gameIsStarted = true;
@@ -27,12 +31,10 @@ public class GameManager : MonoBehaviour {
 
 	public void StartWave(int waveNumber) {
 		Debug.Log ("Starting wave " + waveNumber);
-		countdownText.text = "";
 		waveOngoing = true;
 		enemyManager.deltaHealth = CurrentBonusHealth();
 		enemyManager.deltaDamage = CurrentBonusDamage();
 		enemyManager.StartRepeatSpawn ();
-		timeSinceLastWave = 0;
 	}
 
 	public void StopWave() {
@@ -41,7 +43,6 @@ public class GameManager : MonoBehaviour {
 	}
 
 	public void EndWave() {
-		countdownText.text = timeBetweenWaves.ToString ();
 		waveOngoing = false;
 		++waveCurrent;
 		enemiesSpawnedPreviously = enemyManager.enemiesSpawned;
@@ -52,11 +53,12 @@ public class GameManager : MonoBehaviour {
 			StopWave ();
 		} else if (!enemyManager.isSpawning && enemyManager.enemiesAlive == 0 && waveOngoing) {
 			EndWave ();
-		} else if (timeSinceLastWave >= timeBetweenWaves) {
+		} else if (waitingForTimer && !hud.IsTimerRunning()) {
 			StartWave (waveCurrent);
-		} else if(gameIsStarted && !waveOngoing) {
-			timeSinceLastWave += Time.deltaTime;
-			countdownText.text = (Mathf.MoveTowards(timeBetweenWaves, timeBetweenWaves - timeSinceLastWave, timeBetweenWaves)).ToString ("F1");
+			waitingForTimer = false;
+		} else if(gameIsStarted && !waveOngoing && !hud.IsTimerRunning()) {
+			hud.StartCountdown(timeBetweenWaves);
+			waitingForTimer = true;
 		}
 	}
 
