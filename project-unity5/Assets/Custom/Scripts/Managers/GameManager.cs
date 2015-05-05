@@ -62,7 +62,7 @@ public class GameManager : MonoBehaviour {
 		}
 
 		// Day Night Cycle
-		GameObject.Find ("Sun").transform.Rotate (0.5f, 0, 0);
+		GameObject.Find ("Sun").transform.Rotate (0.1f, 0, 0);
 	}
 
 	private int CurrentBonusHealth(){
