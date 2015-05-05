@@ -29,6 +29,10 @@ public class EnemyMovement : MonoBehaviour {
 		droppedPosition = transform.position;
 	}
 
+	public bool isInControl() {
+		return navMeshAgent.enabled;
+	}
+
   	private void RegainControl () {
   	  	GetComponent<Rigidbody>().isKinematic = true;
     	GetComponent<Rigidbody>().useGravity = false;

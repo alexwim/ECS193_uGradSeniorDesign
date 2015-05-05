@@ -29,7 +29,7 @@ public class EnemyAttack : MonoBehaviour {
 	private void Update() {
 		timer += Time.deltaTime;
 
-		if(timer >= rate && playerInRange) {
+		if(timer >= rate && playerInRange && GetComponent<EnemyMovement>().isInControl()) {
 			Attack();
 		}
 	}
