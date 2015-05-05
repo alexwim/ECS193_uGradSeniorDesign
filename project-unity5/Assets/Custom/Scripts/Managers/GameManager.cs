@@ -60,6 +60,9 @@ public class GameManager : MonoBehaviour {
 			hud.StartCountdown(timeBetweenWaves);
 			waitingForTimer = true;
 		}
+
+		// Day Night Cycle
+		GameObject.Find ("Sun").transform.Rotate (0.5f, 0, 0);
 	}
 
 	private int CurrentBonusHealth(){
