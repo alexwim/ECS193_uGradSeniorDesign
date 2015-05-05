@@ -19,14 +19,18 @@ public class GameManager : MonoBehaviour {
 	private bool waitingForTimer = false;
 
 	private HUDManager hud;
+	private GameObject mainMenu;
 
 	void Start() {
 		hud = GameObject.Find ("/LeapOVRPlayerController/OVRCameraRig/CenterEyeAnchor/HUD").GetComponent<HUDManager> ();
+		mainMenu = GameObject.Find ("MainMenu");
+		mainMenu.SetActive (true);
 	}
 
 	public void StartGame() {
 		gameIsStarted = true;
 		StartWave (waveCurrent);
+		mainMenu.SetActive (false);
 	}
 
 	public void StartWave(int waveNumber) {
