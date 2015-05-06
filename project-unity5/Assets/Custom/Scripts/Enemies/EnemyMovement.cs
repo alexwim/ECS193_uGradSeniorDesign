@@ -7,10 +7,12 @@ public class EnemyMovement : MonoBehaviour {
 	private EnemyHealth enemyHealth;
 	private Rigidbody rigidBody;
   	private bool grabbed;
+	private bool inAir;
 	private Vector3 droppedPosition;
 
   	private void Awake () {
     	grabbed = false;
+		inAir = false;
     	playerCollider = GameObject.FindGameObjectWithTag ("Player").transform.GetComponent<Collider>();
     	navMeshAgent = GetComponent<NavMeshAgent> ();
 		enemyHealth = GetComponent<EnemyHealth> ();
@@ -40,24 +42,36 @@ public class EnemyMovement : MonoBehaviour {
   	}
 
 	private void OnCollisionEnter (Collision collision) {
-		if (!grabbed && !navMeshAgent.enabled && collision.gameObject.name == "Terrain") {
-			ContactPoint contact = collision.contacts[0];
-			Vector3 normal = contact.normal;
-			Vector3 relativeVelocity = collision.relativeVelocity;
-			
-			int damage = (int) Mathf.Abs(Vector3.Dot (normal, relativeVelocity) * GetComponent<Rigidbody>().mass);
-			
-			enemyHealth.TakeDamage (damage);
-			
-			droppedPosition.y = 0; // reset after drop
+		if (collision.gameObject.name == "Terrain") {
+			inAir = false;
 
-			RegainControl ();
+			if (!grabbed && !navMeshAgent.enabled) {
+				ContactPoint contact = collision.contacts[0];
+				Vector3 normal = contact.normal;
+				Vector3 relativeVelocity = collision.relativeVelocity;
+				
+				int damage = (int) Mathf.Abs(Vector3.Dot (normal, relativeVelocity) * GetComponent<Rigidbody>().mass);
+				
+				enemyHealth.TakeDamage (damage);
+				
+				droppedPosition.y = 0; // reset after drop
+
+				RegainControl ();
+			}
+		}
+	}
+
+	private void OnCollisionExit (Collision collision) {
+		if (collision.gameObject.name == "Terrain") {
+			inAir = true;
 		}
 	}
 
   	private void Update () {
     	if (navMeshAgent.enabled) {
-      		navMeshAgent.SetDestination (playerCollider.ClosestPointOnBounds(transform.position));
-    	}
+			navMeshAgent.SetDestination (playerCollider.ClosestPointOnBounds (transform.position));
+		} else if (!grabbed && !inAir) {
+			RegainControl ();
+		}
   	}
 }
