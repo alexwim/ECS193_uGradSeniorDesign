@@ -12,7 +12,8 @@ public class PlayerHealth : MonoBehaviour {
 
 	void Start() {
 		hud = GameObject.Find ("/LeapOVRPlayerController/OVRCameraRig/CenterEyeAnchor/HUD").GetComponent<HUDManager> ();
-		Reset ();
+		health = maxHealth;
+		isDead = false;
 	}
 
 	public void Reset() {
