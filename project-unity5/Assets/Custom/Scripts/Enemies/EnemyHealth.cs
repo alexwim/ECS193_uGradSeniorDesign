@@ -5,7 +5,7 @@ public class EnemyHealth : MonoBehaviour {
 	public int health = 100;
 
 	public void TakeDamage(int damage) {
-		health -= damage;
+		health = (int) Mathf.MoveTowards (health, health - damage, health);
 
 		Debug.Log ("damage: " + damage + "; health=" + health);
 
