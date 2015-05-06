@@ -5,8 +5,13 @@ using VRWidgets;
 public class ReturnButton : ButtonBase {
 	private GameManager gameManager;
 
+	private Vector3 defaultPosition;
+	private Quaternion defaultRotation;
+
 	void Start() {
-		gameManager = GameObject.Find ("GameManager").GetComponent<GameManager>();
+		gameManager = GameObject.Find ("GameManager").GetComponent<GameManager> ();
+		defaultPosition = transform.localPosition;
+		defaultRotation = transform.localRotation;
 	}
 	
 	public void Reset() {
@@ -15,8 +20,8 @@ public class ReturnButton : ButtonBase {
 		body.angularVelocity = Vector3.zero;
 		body.inertiaTensorRotation = Quaternion.identity;
 		
-		transform.localPosition = new Vector3 (0, -1, 0);
-		transform.localRotation = new Quaternion(0.0f,0,0,1.0f);
+		transform.localPosition = defaultPosition;
+		transform.localRotation = defaultRotation;
 	}
 
 	public override void ButtonPressed() {
