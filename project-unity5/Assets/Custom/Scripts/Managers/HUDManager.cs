@@ -8,6 +8,10 @@ public class HUDManager : MonoBehaviour {
 	private Image healthBar;
 	[SerializeField]
 	private Text countdownTimer;
+	[SerializeField]
+	private GameObject waveInfo;
+	[SerializeField]
+	private Text waveNumber;
 
 	private float timeLeftOnTimer = 0.0f;
 	private bool isTimerRunning = false;
@@ -39,5 +43,13 @@ public class HUDManager : MonoBehaviour {
 
 	public bool IsTimerRunning() {
 		return isTimerRunning;
+	}
+
+	public void ToggleWaveInfo() {
+		waveInfo.SetActive (!waveInfo.activeSelf);
+	}
+
+	public void SetWaveNumber(int number) {
+		waveNumber.text = number.ToString ();
 	}
 }

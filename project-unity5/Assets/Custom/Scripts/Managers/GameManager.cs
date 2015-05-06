@@ -41,6 +41,7 @@ public class GameManager : MonoBehaviour {
 		waitingForTimer = false;
 
 		// This must be the last thing we do
+		hud.ToggleWaveInfo ();
 		StartWave (waveCurrent);
 	}
 
@@ -57,6 +58,7 @@ public class GameManager : MonoBehaviour {
 
 		gameOverMenu.SetActive (true);
 		gameOverMenu.GetComponentInChildren<ReturnButton> ().Reset ();
+		hud.ToggleWaveInfo ();
 		gameIsStarted = false;
 	}
 
@@ -66,6 +68,7 @@ public class GameManager : MonoBehaviour {
 		enemyManager.deltaHealth = CurrentBonusHealth();
 		enemyManager.deltaDamage = CurrentBonusDamage();
 		enemyManager.StartRepeatSpawn ();
+		hud.SetWaveNumber (waveNumber);
 	}
 
 	public void StopWave() {
