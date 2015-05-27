@@ -6,8 +6,8 @@
 \title{Leap VR Castle Defense\\User Guide}
 \author{Valerie Gadjali\\
 	Timothy Tong\\
-	Mario Yepez\\
-	Alexandre Wimmers
+	Alexandre Wimmers\\
+	Mario Yepez
 }
 \date{Last Updated: May 27, 2015}
 
@@ -61,13 +61,16 @@ This project was created using the following versions. Previous versions of runt
 
 \section{Game Installation}
 
-No installation required. The Unity system behaves very similarly to Java. The Unity runtime environment acts like the Java Virtual Machine so installation of the game engine will suffice. It is important to note that development of the game was done strictly in Windows and not tested extensively on OSX or Linux. 
+No installation required. The Unity system behaves very similarly to Java. The Unity runtime environment acts like the Java Virtual Machine so installation of the game engine will suffice. 
+
+\textbf{***Critical:} Development of game was perform strictly in Windows 7 and not extensively tested on OSX or Linux.
 
 \section{Gameplay}
 
 \begin{enumerate}
 	\item First, make sure that both the Oculus Rift and the Leap Motion devices are on and connected to your computer.
-	\item To run the game, start by executing \texttt{LeapVRCastleDefense\_DirectToRift.exe}. On OSX, DirectToRift.exe is not supported, to run the game mirror your display to the Rift, execute \texttt{LeapVRCastleDefense.app}, and position the window correctly.
+	\item To run the game, start by executing:\\
+		 \texttt{LeapVRCastleDefense\_DirectToRift.exe}\footnote{On OSX, DirectToRift.exe is not supported, to run the game mirror your display to the Rift, execute \texttt{LeapVRCastleDefense.app}, and position the window correctly.}
 	\item Put on the Oculus Rift.
 	\item A game menu will appear. Move your hands in front of the Leap Motion device and press the \texttt{Start} button.
 	\item Enemies will begin spawning. The enemies will constantly run towards the castle and attempt to damage it. 
@@ -77,9 +80,40 @@ No installation required. The Unity system behaves very similarly to Java. The U
 	\item The game continues until player runs out of health.
 \end{enumerate}
 
+\newpage
+
 \section{Further Development}
 
 \subsection{Extending from the Current Leap VR Castle Defense}
+
+\textbf{***This guide is written with the assumption that the developer is familiar with the Unity game engine.}
+
+\subsubsection{Load the Project}
+
+\begin{enumerate}
+	\item Clone the Bitbucket repository:\\ \url{git@bitbucket.org:ecs193/project.git}
+	\item Load the scene -- \texttt{main.unity} -- into the Unity game engine.
+\end{enumerate}
+
+\subsubsection{Edit the Map}
+
+\begin{enumerate}
+	\item Using Unity's terrain tools, modify the map.
+	\item To add new entities, drag and drop Prefabs from the Project windows into the Scene window or the Hierarchy window.
+\end{enumerate}
+
+\subsubsection{Modify Enemies}
+
+\begin{enumerate}
+	\item Under directory \texttt{Custom/Prefabs/Enemies}, enemy entities are notated by the \texttt{.prefab} extension in this folder.
+	\item To change the model, modify the renderer component.
+	\item To modify the enemy behavior, modify any of the scripts attached to the enemies.\footnote{All scripts are written in in C\#}
+	\begin{itemize}
+		\item EnemyAttack.cs (Enemy script to attack player)
+		\item EnemyHealth.cs (Enemy script to handle enemy health)
+		\item EnemyMovement.cs (Enemy script to handle movement)
+	\end{itemize}
+\end{enumerate}
 
 \subsection{Starting from Scratch}
 
