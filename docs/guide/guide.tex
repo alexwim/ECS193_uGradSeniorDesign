@@ -70,11 +70,19 @@ No installation required. The Unity system behaves very similarly to Java. The U
 
 \textbf{***This guide is written with the assumption that the developer is familiar with the Unity game engine.}
 
-\subsubsection{Load the Project}
+\subsubsection{Getting the Codebase}
 
 \begin{enumerate}
 	\item Clone the Bitbucket repository:\\ \url{git@bitbucket.org:ecs193/project.git}
-	\item Load the scene -- \texttt{main.unity} -- into the Unity game engine.
+	\item From here on, the $<$ROOT$>$ directory will be referred to where the project directory is. If you pulled directly from the repository, it will be in directory \texttt{project-unity5}.
+\end{enumerate}
+
+\subsubsection{Load the Project}
+
+Directory: \texttt{$<$ROOT$>$/Scenes}
+
+\begin{enumerate}
+	\item Open \texttt{main.unity} in the Unity game engine.
 \end{enumerate}
 
 \subsubsection{Edit the Map}
@@ -86,8 +94,10 @@ No installation required. The Unity system behaves very similarly to Java. The U
 
 \subsubsection{Modify Enemies}
 
+Directory: \texttt{$<$ROOT$>$/Assets/Custom/Prefabs/Enemies}
+
 \begin{enumerate}
-	\item Under directory \texttt{Custom/Prefabs/Enemies}, enemy entities are notated by the \texttt{.prefab} extension in this folder.
+	\item Enemy entities are notated by the \texttt{.prefab} extension in this folder.
 	\item To change the model, modify the renderer component.
 	\item To modify the enemy behavior, modify any of the scripts attached to the enemies.\footnote{All scripts are written in in C\#}
 	\begin{itemize}
@@ -97,6 +107,14 @@ No installation required. The Unity system behaves very similarly to Java. The U
 	\end{itemize}
 \end{enumerate}
 
-\subsection{Starting from Scratch}
+\subsubsection{Modify Pinching Behavior}
 
+Directory: \texttt{$<$ROOT$>$/Assets/LeapMotion/Scripts/Utils/}
+
+\begin{enumerate}
+	\item Modify script \texttt{MagneticPinch.cs}.
+	\item Modify the function: \texttt{OnPinch(...)}
+\end{enumerate}
+
+In function, \texttt{OnPinch(...)}, array of Collider objects is array of game entities that are within pinching distance. The following for-loop is to select the closest entity among those that are within pinching distance. This allows the hand to grab only one object at a time.
 \end{document}
