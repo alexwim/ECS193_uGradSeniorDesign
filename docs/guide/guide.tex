@@ -68,7 +68,9 @@ No installation required. The Unity system behaves very similarly to Java. The U
 
 \subsection{Extending from the Current Leap VR Castle Defense}
 
-\textbf{***This guide is written with the assumption that the developer is familiar with the Unity game engine.}
+\textbf{*** This guide is written with the assumption that the developer is familiar with the Unity game engine.}
+
+\textbf{*** All Unity game scripts are written in C\#.}
 
 \subsubsection{Getting the Codebase}
 
@@ -79,7 +81,7 @@ No installation required. The Unity system behaves very similarly to Java. The U
 
 \subsubsection{Load the Project}
 
-Directory: \texttt{$<$ROOT$>$/Scenes}
+Directory: \texttt{$<$ROOT$>$/Scenes/}
 
 \begin{enumerate}
 	\item Open \texttt{main.unity} in the Unity game engine.
@@ -94,18 +96,29 @@ Directory: \texttt{$<$ROOT$>$/Scenes}
 
 \subsubsection{Modify Enemies}
 
-Directory: \texttt{$<$ROOT$>$/Assets/Custom/Prefabs/Enemies}
+Directory: \texttt{$<$ROOT$>$/Assets/Custom/Prefabs/Enemies/}
 
 \begin{enumerate}
 	\item Enemy entities are notated by the \texttt{.prefab} extension in this folder.
 	\item To change the model, modify the renderer component.
-	\item To modify the enemy behavior, modify any of the scripts attached to the enemies.\footnote{All scripts are written in in C\#}
+	\item To modify the enemy behavior, modify any of the scripts attached to the enemies.
 	\begin{itemize}
 		\item EnemyAttack.cs (Enemy script to attack player)
 		\item EnemyHealth.cs (Enemy script to handle enemy health)
 		\item EnemyMovement.cs (Enemy script to handle movement)
 	\end{itemize}
 \end{enumerate}
+
+\subsubsection{Modify Game Behavior}
+
+Directory: \texttt{$<$ROOT$>$/Assets/Custom/Prefabs/Managers/}
+
+\begin{enumerate}
+	\item Modify the EnemyManager.prefab to change Enemy spawn types.
+	\item Modify the GameManager.prefab to change Enemy spawning behavior and Day Night Cycle.
+\end{enumerate}
+
+The GameManager prefab coordinates with all EnemyManagers and controls the waves in which the enemies come. Each respective EnemyManager only focuses on spawning the enemy type it is in charge of.
 
 \subsubsection{Modify Pinching Behavior}
 
