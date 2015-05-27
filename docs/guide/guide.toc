@@ -6,3 +6,5 @@
 \contentsline {section}{\numberline {3}Game Installation}{3}
 \contentsline {section}{\numberline {4}Gameplay}{3}
 \contentsline {section}{\numberline {5}Further Development}{3}
+\contentsline {subsection}{\numberline {5.1}Extending from the Current Leap VR Castle Defense}{3}
+\contentsline {subsection}{\numberline {5.2}Starting from Scratch}{3}
