@@ -43,6 +43,8 @@ This project was created using the following versions. Previous versions of runt
 
 No installation required. The Unity system behaves very similarly to Java. The Unity runtime environment acts like the Java Virtual Machine so installation of the game engine will suffice. 
 
+It is highly recommended to calibrate the Leap Motion prior to playing the game.
+
 \textbf{***Critical:} Development of game was perform strictly in Windows 7 and not extensively tested on OSX or Linux.
 
 \pagebreak
@@ -62,6 +64,14 @@ No installation required. The Unity system behaves very similarly to Java. The U
 	\item The game continues until player runs out of health.
 	\item The goal is to get as many points as possible before running out of health.
 \end{enumerate}
+
+\subsection{Gameplay Tips}
+
+\begin{itemize}
+	\item In order to grab an enemy, pinch your thumb and your forefinger together on the enemy itself.
+	\item If the hands on screen start behaving in an odd fashion, place your hands such that they face the screen in order to reset them.
+	\item Perform very obvious motions with your hands.  Moving too quickly or making minute gestures may confuse the Leap Motion.
+\end{itemize}
 
 \newpage
 
@@ -99,6 +109,7 @@ Directory: \texttt{$<$ROOT$>$/Scenes/}
 \begin{enumerate}
 	\item Using Unity's terrain tools, modify the map.
 	\item To add new entities, drag and drop Prefabs from the Project windows into the Scene window or the Hierarchy window.
+	\item Be sure to re-bake the Navigation mesh if modifying or adding objects on the terrain the enemies will be using.
 \end{enumerate}
 
 \subsubsection{Modify Enemies}
