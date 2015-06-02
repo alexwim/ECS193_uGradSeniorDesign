@@ -22,6 +22,7 @@ public class GameManager : MonoBehaviour {
 	public GameObject mainMenu;
 	public GameObject gameOverMenu;
 	public PlayerHealth player;
+	public DayNightController dayNightController;
 
 	void Start() {
 		hud = GameObject.Find ("/LeapOVRPlayerController/OVRCameraRig/CenterEyeAnchor/HUD").GetComponent<HUDManager> ();
@@ -69,6 +70,8 @@ public class GameManager : MonoBehaviour {
 		enemyManager.deltaDamage = CurrentBonusDamage();
 		enemyManager.StartRepeatSpawn ();
 		hud.SetWaveNumber (waveNumber);
+
+		dayNightController.UpdateSunRotation ();
 	}
 
 	public void StopWave() {

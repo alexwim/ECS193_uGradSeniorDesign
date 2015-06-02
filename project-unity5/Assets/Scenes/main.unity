@@ -156,7 +156,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1277089595}
-  m_RootOrder: 3
+  m_RootOrder: 4
 --- !u!1 &128772648
 GameObject:
   m_ObjectHideFlags: 0
@@ -243,7 +243,7 @@ Transform:
   m_LocalScale: {x: .00300000003, y: .00300000003, z: .00300000003}
   m_Children: []
   m_Father: {fileID: 1277089595}
-  m_RootOrder: 2
+  m_RootOrder: 3
 --- !u!1 &143867245
 GameObject:
   m_ObjectHideFlags: 0
@@ -709,6 +709,103 @@ MonoBehaviour:
   isSpawning: 0
   deltaHealth: 0
   deltaDamage: 0
+--- !u!1 &537790206
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 537790207}
+  - 82: {fileID: 537790208}
+  m_Layer: 0
+  m_Name: Background Music
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &537790207
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 537790206}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 79.3055725, y: -78.63517, z: 27.7758713}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1277089595}
+  m_RootOrder: 0
+--- !u!82 &537790208
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 537790206}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: f0540756e4eebe4408704744074c28f5, type: 3}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 1
+  Mute: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
 --- !u!1 &547941961
 GameObject:
   m_ObjectHideFlags: 0
@@ -745,6 +842,7 @@ MonoBehaviour:
   mainMenu: {fileID: 1113856873}
   gameOverMenu: {fileID: 619676284}
   player: {fileID: 0}
+  dayNightController: {fileID: 0}
 --- !u!4 &547941963
 Transform:
   m_ObjectHideFlags: 0
@@ -985,7 +1083,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1277089595}
-  m_RootOrder: 0
+  m_RootOrder: 1
 --- !u!114 &829839509
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1187,7 +1285,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1113856874
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1298,6 +1396,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 537790207}
   - {fileID: 829839508}
   - {fileID: 1474283335}
   - {fileID: 128772653}
@@ -1624,12 +1723,12 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1474283333}
-  m_LocalRotation: {x: 0, y: .422618091, z: 0, w: -.906307876}
+  m_LocalRotation: {x: -.346829116, y: .390447825, z: -.161728814, w: -.837319493}
   m_LocalPosition: {x: 200, y: 50, z: -200}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1277089595}
-  m_RootOrder: 1
+  m_RootOrder: 2
 --- !u!1 &1485688226
 GameObject:
   m_ObjectHideFlags: 0
