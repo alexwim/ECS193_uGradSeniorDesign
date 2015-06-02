@@ -16,6 +16,8 @@ GameObject:
   - 135: {fileID: 13507462}
   - 95: {fileID: 9558308}
   - 114: {fileID: 11478898}
+  - 114: {fileID: 11487904}
+  - 114: {fileID: 11402732}
   m_Layer: 0
   m_Name: Zombunny
   m_TagString: Enemy
@@ -49,9 +51,9 @@ Rigidbody:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 192808}
   serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 3.40282347e+38
-  m_AngularDrag: 3.40282347e+38
+  m_Mass: 10
+  m_Drag: 0
+  m_AngularDrag: 0
   m_UseGravity: 0
   m_IsKinematic: 1
   m_Interpolate: 0
@@ -74,6 +76,19 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 0
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &11402732
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 192808}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 311b5d3133e4d0644b666061d7326892, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rate: 1
+  damage: 5
 --- !u!114 &11478898
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -85,6 +100,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28779146d256b424d814775f293ca7fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &11487904
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 192808}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4399e69c05d0ad41a404b374345f997, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 100
 --- !u!135 &13507462
 SphereCollider:
   m_ObjectHideFlags: 1
@@ -154,7 +181,7 @@ NavMeshAgent:
   m_GameObject: {fileID: 192808}
   m_Enabled: 1
   m_Radius: .5
-  m_Speed: 2
+  m_Speed: 5
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
