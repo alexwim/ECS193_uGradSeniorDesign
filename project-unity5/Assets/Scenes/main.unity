@@ -841,8 +841,8 @@ MonoBehaviour:
   perWaveDeltaEnemyCount: 1
   mainMenu: {fileID: 1113856873}
   gameOverMenu: {fileID: 619676284}
-  player: {fileID: 0}
-  dayNightController: {fileID: 0}
+  player: {fileID: 128772649}
+  dayNightController: {fileID: 829839509}
 --- !u!4 &547941963
 Transform:
   m_ObjectHideFlags: 0

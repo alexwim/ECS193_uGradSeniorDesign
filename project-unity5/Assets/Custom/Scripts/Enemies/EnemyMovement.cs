@@ -26,6 +26,7 @@ public class EnemyMovement : MonoBehaviour {
 		navMeshAgent.enabled = false;
 		rigidBody.isKinematic = false;
 		rigidBody.useGravity = true;
+		animator.enabled = false;
 	}
 
 	public void Release() {
@@ -41,6 +42,7 @@ public class EnemyMovement : MonoBehaviour {
   	  	GetComponent<Rigidbody>().isKinematic = true;
     	GetComponent<Rigidbody>().useGravity = false;
     	navMeshAgent.enabled = true;
+		animator.enabled = true;
 
 		animator.Play ("Move");
   	}
