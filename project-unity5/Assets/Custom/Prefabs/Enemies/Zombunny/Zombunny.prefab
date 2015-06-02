@@ -1,21 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &187194
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 424514}
-  - 137: {fileID: 13740804}
-  m_Layer: 0
-  m_Name: Zombunny
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
 --- !u!1 &192808
 GameObject:
   m_ObjectHideFlags: 0
@@ -24,12 +8,14 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 416592}
-  - 95: {fileID: 9558308}
-  - 54: {fileID: 5467386}
+  - 33: {fileID: 3396398}
   - 136: {fileID: 13602576}
-  - 135: {fileID: 13507462}
+  - 137: {fileID: 13759948}
   - 195: {fileID: 19542820}
-  - 114: {fileID: 11481886}
+  - 54: {fileID: 5467386}
+  - 135: {fileID: 13507462}
+  - 95: {fileID: 9558308}
+  - 114: {fileID: 11478898}
   m_Layer: 0
   m_Name: Zombunny
   m_TagString: Enemy
@@ -44,24 +30,18 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 192808}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: .310000002, y: -0, z: 9.72000027}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 424514}
+  m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
---- !u!4 &424514
-Transform:
+--- !u!33 &3396398
+MeshFilter:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 187194}
-  m_LocalRotation: {x: 0, y: 0, z: -.707106829, w: .707106829}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 416592}
-  m_RootOrder: 0
+  m_GameObject: {fileID: 192808}
+  m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!54 &5467386
 Rigidbody:
   m_ObjectHideFlags: 1
@@ -94,7 +74,7 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 0
   m_AllowConstantClipSamplingOptimization: 1
---- !u!114 &11481886
+--- !u!114 &11478898
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -102,14 +82,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 192808}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 05f8da6becc42a547b650f8d782e7b2f, type: 3}
+  m_Script: {fileID: 11500000, guid: 28779146d256b424d814775f293ca7fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  droppedPosition: {x: 0, y: 0, z: 0}
-  grabbed: 0
-  health: 100
-  rate: 1
-  damage: 5
 --- !u!135 &13507462
 SphereCollider:
   m_ObjectHideFlags: 1
@@ -118,7 +93,7 @@ SphereCollider:
   m_GameObject: {fileID: 192808}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 2
   m_Radius: .800000012
   m_Center: {x: 0, y: .800000012, z: 0}
@@ -135,18 +110,18 @@ CapsuleCollider:
   m_Height: 1.5
   m_Direction: 1
   m_Center: {x: 0, y: .800000012, z: 0}
---- !u!137 &13740804
+--- !u!137 &13759948
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 187194}
+  m_GameObject: {fileID: 192808}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 2100000, guid: 62f493b4d50f489498b41629d242a0ef, type: 2}
-  - {fileID: 2100000, guid: a3caf1b141a4a33459e9ecec0d094f95, type: 2}
+  - {fileID: 2100000, guid: f849218e58fa4a148b9d4883e9c17a1d, type: 2}
+  - {fileID: 2100000, guid: 7107325f90010624fa98b516ad4301ef, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
@@ -168,8 +143,8 @@ SkinnedMeshRenderer:
   m_BlendShapeWeights: []
   m_RootBone: {fileID: 0}
   m_AABB:
-    m_Center: {x: -.753364205, y: .14181754, z: .084738791}
-    m_Extent: {x: .927979112, y: .801833987, z: .540792048}
+    m_Center: {x: .141817719, y: .753364086, z: .0847384334}
+    m_Extent: {x: .801833868, y: .927979112, z: .54079181}
   m_DirtyAABB: 0
 --- !u!195 &19542820
 NavMeshAgent:
@@ -179,7 +154,7 @@ NavMeshAgent:
   m_GameObject: {fileID: 192808}
   m_Enabled: 1
   m_Radius: .5
-  m_Speed: 10
+  m_Speed: 2
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120

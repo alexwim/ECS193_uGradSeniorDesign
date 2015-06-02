@@ -4,6 +4,7 @@ using System.Collections;
 public class EnemyMovement : MonoBehaviour {
   	private Collider playerCollider;
   	private NavMeshAgent navMeshAgent;
+	private Animator animator;
 	private EnemyHealth enemyHealth;
 	private Rigidbody rigidBody;
   	private bool grabbed;
