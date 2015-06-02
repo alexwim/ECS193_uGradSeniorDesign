@@ -183,6 +183,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 100
   deathClip: {fileID: 8300000, guid: 1d0c312f40885604d80713482d60ae7f, type: 3}
+  isDying: 0
 --- !u!135 &13507462
 SphereCollider:
   m_ObjectHideFlags: 1

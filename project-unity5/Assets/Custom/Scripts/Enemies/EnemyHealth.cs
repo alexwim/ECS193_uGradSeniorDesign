@@ -3,11 +3,18 @@ using System.Collections;
 
 public class EnemyHealth : MonoBehaviour {
 	public int health = 100;
-	public AudioClip deathClip;
 
+	public AudioClip deathClip;
 	private AudioSource audioSource;
 
+	private Animator animator;
+	private float deathTime = 1.5f;
+
+	[HideInInspector]
+	public bool isDying = false;
+
 	private void Awake() {
+		animator = GetComponent<Animator> ();
 		audioSource = GetComponent<AudioSource> ();
 	}
 
@@ -15,7 +22,6 @@ public class EnemyHealth : MonoBehaviour {
 		health = (int) Mathf.MoveTowards (health, health - damage, health);
 
 		audioSource.Play ();
-		StartCoroutine (Wait (audioSource.clip.length));
 		Debug.Log ("damage: " + damage + "; health=" + health);
 
 		if (health <= 0) {
@@ -24,16 +30,16 @@ public class EnemyHealth : MonoBehaviour {
 	}
 
 	private void death() {
-		//audioSource.clip = deathClip;
 		AudioSource.PlayClipAtPoint (deathClip, GameObject.Find ("Castle").transform.position);
-		StartCoroutine (Wait (deathClip.length));
-		//audioSource.Play ();
+		isDying = true;
+		animator.Play ("Death");
+		StartCoroutine (WaitThenDie (deathTime));
+	}
+
+	private IEnumerator WaitThenDie(float waitTime) {
+		yield return new WaitForSeconds(waitTime);
 
 		gameObject.GetComponentInParent<EnemyManager>().enemiesAlive -= 1;
 		Destroy (gameObject);
-	}
-
-	private IEnumerator Wait(float waitTime) {
-		yield return new WaitForSeconds(waitTime);
 	}
 }

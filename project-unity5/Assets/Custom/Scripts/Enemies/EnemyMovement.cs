@@ -38,13 +38,15 @@ public class EnemyMovement : MonoBehaviour {
 		return navMeshAgent.enabled;
 	}
 
-  	private void RegainControl () {
-  	  	GetComponent<Rigidbody>().isKinematic = true;
-    	GetComponent<Rigidbody>().useGravity = false;
-    	navMeshAgent.enabled = true;
+	private void RegainControl () {
+		GetComponent<Rigidbody> ().isKinematic = true;
+		GetComponent<Rigidbody> ().useGravity = false;
+				
+		navMeshAgent.enabled = true;
 		animator.enabled = true;
-
-		animator.Play ("Move");
+		if (!enemyHealth.isDying) {
+			animator.Play ("Move");
+		}
   	}
 
 	private void OnCollisionEnter (Collision collision) {
@@ -70,12 +72,15 @@ public class EnemyMovement : MonoBehaviour {
 	private void OnCollisionExit (Collision collision) {
 		if (collision.gameObject.name == "Terrain") {
 			inAir = true;
-
-			animator.Play("Idle");
 		}
 	}
 
   	private void Update () {
+		if (enemyHealth.isDying) {
+			navMeshAgent.enabled = false;
+			return;
+		}
+
     	if (navMeshAgent.enabled) {
 			navMeshAgent.SetDestination (playerCollider.ClosestPointOnBounds (transform.position));
 		} else if (!grabbed && !inAir) {
