@@ -18,6 +18,7 @@ public class EnemyMovement : MonoBehaviour {
     	navMeshAgent = GetComponent<NavMeshAgent> ();
 		enemyHealth = GetComponent<EnemyHealth> ();
 		rigidBody = GetComponent<Rigidbody> ();
+		animator = GetComponent<Animator> ();
   	}
 
 	public void Pinch() {
@@ -40,6 +41,8 @@ public class EnemyMovement : MonoBehaviour {
   	  	GetComponent<Rigidbody>().isKinematic = true;
     	GetComponent<Rigidbody>().useGravity = false;
     	navMeshAgent.enabled = true;
+
+		animator.Play ("Move");
   	}
 
 	private void OnCollisionEnter (Collision collision) {
@@ -65,6 +68,8 @@ public class EnemyMovement : MonoBehaviour {
 	private void OnCollisionExit (Collision collision) {
 		if (collision.gameObject.name == "Terrain") {
 			inAir = true;
+
+			animator.Play("Idle");
 		}
 	}
 
