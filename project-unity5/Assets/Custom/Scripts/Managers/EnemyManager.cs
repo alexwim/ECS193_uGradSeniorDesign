@@ -3,7 +3,7 @@ using System.Collections;
 
 public class EnemyManager : MonoBehaviour
 {
-	public GameObject enemy;
+	public GameObject[] enemies;
 	public float spawnTime;
 	public Transform[] spawnPoints;
 
