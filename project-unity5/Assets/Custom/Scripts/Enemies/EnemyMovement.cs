@@ -58,7 +58,7 @@ public class EnemyMovement : MonoBehaviour {
 				Vector3 normal = contact.normal;
 				Vector3 relativeVelocity = collision.relativeVelocity;
 				
-				int damage = (int) Mathf.Abs(Vector3.Dot (normal, relativeVelocity) * GetComponent<Rigidbody>().mass);
+				int damage = (int) Mathf.Abs(Vector3.Dot (normal, relativeVelocity) * 10);
 				
 				enemyHealth.TakeDamage (damage);
 				
