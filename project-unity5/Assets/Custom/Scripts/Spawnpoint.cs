@@ -26,7 +26,7 @@ public class Spawnpoint : MonoBehaviour {
 	}
 
 	private GameObject PickEnemy() {
-		return enemies[(int) Mathf.Floor(Random.Range(0.5f, 1.5f))];
+		return enemies[(int) Mathf.Floor(Random.Range(0f, enemies.Length))];
 	}
 
 	private Vector3 GetSpawnLocation() {
