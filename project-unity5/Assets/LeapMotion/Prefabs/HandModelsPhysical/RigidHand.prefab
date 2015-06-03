@@ -1229,8 +1229,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75744f6bc3b9e4cb8b938addf7e6495b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  grabbableNames: .*Enemy.*
-  forceSpringConstant: 100
+  forceSpringConstant: 150
   magnetDistance: 2
 --- !u!1001 &100100000
 Prefab:
