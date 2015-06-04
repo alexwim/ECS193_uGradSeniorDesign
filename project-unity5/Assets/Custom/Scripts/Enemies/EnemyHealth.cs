@@ -19,6 +19,11 @@ public class EnemyHealth : MonoBehaviour {
 	}
 
 	public void TakeDamage(int damage) {
+		if (damage == int.MaxValue) {
+			kill ();
+			return;
+		}
+
 		health = (int) Mathf.MoveTowards (health, health - damage, health);
 
 		audioSource.Play ();
@@ -39,6 +44,10 @@ public class EnemyHealth : MonoBehaviour {
 	private IEnumerator WaitThenDie(float waitTime) {
 		yield return new WaitForSeconds(waitTime);
 
+		kill ();
+	}
+
+	private void kill() {
 		gameObject.GetComponentInParent<EnemyManager>().enemiesAlive -= 1;
 		Destroy (gameObject);
 	}
