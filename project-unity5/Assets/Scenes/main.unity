@@ -76,7 +76,7 @@ NavMeshSettings:
   m_ObjectHideFlags: 0
   m_BuildSettings:
     serializedVersion: 2
-    agentRadius: .5
+    agentRadius: .100000001
     agentHeight: 1.5
     agentSlope: 35
     agentClimb: .400000006
@@ -84,7 +84,7 @@ NavMeshSettings:
     maxJumpAcrossDistance: 0
     accuratePlacement: 0
     minRegionArea: 2
-    cellSize: .166666672
+    cellSize: .0333333351
     manualCellSize: 0
   m_NavMeshData: {fileID: 23800000, guid: 7f67bbb42c3867f41b54cd45ffa19d77, type: 2}
 --- !u!1 &67862777
@@ -701,6 +701,7 @@ MonoBehaviour:
   enemies:
   - {fileID: 192808, guid: 94e8c79fc25cc6049b4d915343b31d25, type: 2}
   - {fileID: 151792, guid: 02a571195baa8cc47a9494b3d0905ae1, type: 2}
+  - {fileID: 100808, guid: 088155363b03cfa4f9852a5a3d2147db, type: 2}
   spawnTime: 3
   spawnPoints:
   - {fileID: 702395475}
