@@ -19,10 +19,12 @@ public class MagneticPinch : MonoBehaviour {
 
   	protected bool pinching_;
   	protected Collider grabbed_;
+	protected Vector3 pinchDelta_;
 
   	void Start() {
     	pinching_ = false;
     	grabbed_ = null;
+		pinchDelta_ = Vector3.zero;
   	}
 
   	void OnPinch(Vector3 pinch_position) {
@@ -46,6 +48,7 @@ public class MagneticPinch : MonoBehaviour {
 			}
 		}
 		if (grabbed_ != null) {
+			pinchDelta_ = distance;
 			grabbed_.GetComponent<EnemyMovement> ().Pinch ();
 		}
   	}
@@ -66,6 +69,7 @@ public class MagneticPinch : MonoBehaviour {
 		
 		grabbed_ = null;
 		pinching_ = false;
+		pinchDelta_ = Vector3.zero;
 	}
 
   	void Update() {
@@ -104,8 +108,9 @@ public class MagneticPinch : MonoBehaviour {
     
 			// Accelerate what we are grabbing toward the pinch.
     		if (grabbed_ != null) {
-      			Vector3 distance = pinch_position - grabbed_.transform.position;
+      			Vector3 distance = pinch_position - (grabbed_.transform.position + pinchDelta_);
       			grabbed_.GetComponent<Rigidbody>().AddForce(forceSpringConstant * distance);
     		}
   	}
 }
+	

@@ -14,12 +14,7 @@ public class DayNightController : MonoBehaviour {
 		baseIntensity = sun.intensity;
 	}
 
-	// Update is called once per frame
-	private void Update () {
-		UpdateSunRotation ();
-	}
-
-	private void UpdateSunRotation() {
+	public void UpdateSunRotation() {
 		sun.transform.Rotate (0.1f * timeMultiplier,0,0);
 		//sun.transform.localRotation = Quaternion.Euler ((currentTime * 360.0f) - 90, 170, 0);
 	}

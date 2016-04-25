@@ -4,6 +4,7 @@ using System.Collections;
 public class EnemyMovement : MonoBehaviour {
   	private Collider playerCollider;
   	private NavMeshAgent navMeshAgent;
+	private Animator animator;
 	private EnemyHealth enemyHealth;
 	private Rigidbody rigidBody;
   	private bool grabbed;
@@ -17,6 +18,7 @@ public class EnemyMovement : MonoBehaviour {
     	navMeshAgent = GetComponent<NavMeshAgent> ();
 		enemyHealth = GetComponent<EnemyHealth> ();
 		rigidBody = GetComponent<Rigidbody> ();
+		animator = GetComponent<Animator> ();
   	}
 
 	public void Pinch() {
@@ -24,6 +26,7 @@ public class EnemyMovement : MonoBehaviour {
 		navMeshAgent.enabled = false;
 		rigidBody.isKinematic = false;
 		rigidBody.useGravity = true;
+		animator.enabled = false;
 	}
 
 	public void Release() {
@@ -35,10 +38,15 @@ public class EnemyMovement : MonoBehaviour {
 		return navMeshAgent.enabled;
 	}
 
-  	private void RegainControl () {
-  	  	GetComponent<Rigidbody>().isKinematic = true;
-    	GetComponent<Rigidbody>().useGravity = false;
-    	navMeshAgent.enabled = true;
+	private void RegainControl () {
+		GetComponent<Rigidbody> ().isKinematic = true;
+		GetComponent<Rigidbody> ().useGravity = false;
+				
+		navMeshAgent.enabled = true;
+		animator.enabled = true;
+		if (!enemyHealth.isDying) {
+			animator.Play ("Move");
+		}
   	}
 
 	private void OnCollisionEnter (Collision collision) {
@@ -50,7 +58,7 @@ public class EnemyMovement : MonoBehaviour {
 				Vector3 normal = contact.normal;
 				Vector3 relativeVelocity = collision.relativeVelocity;
 				
-				int damage = (int) Mathf.Abs(Vector3.Dot (normal, relativeVelocity) * GetComponent<Rigidbody>().mass);
+				int damage = (int) Mathf.Abs(Vector3.Dot (normal, relativeVelocity) * 10);
 				
 				enemyHealth.TakeDamage (damage);
 				
@@ -68,6 +76,11 @@ public class EnemyMovement : MonoBehaviour {
 	}
 
   	private void Update () {
+		if (enemyHealth.isDying) {
+			navMeshAgent.enabled = false;
+			return;
+		}
+
     	if (navMeshAgent.enabled) {
 			navMeshAgent.SetDestination (playerCollider.ClosestPointOnBounds (transform.position));
 		} else if (!grabbed && !inAir) {
